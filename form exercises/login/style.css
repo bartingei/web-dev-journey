@@ -1,0 +1,37 @@
+body{
+    height:100%;
+    box-sizing: border-box;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+     margin-top: 250px;
+    margin-left: 120px;
+    margin-right: 120px;
+   background-image: url('emoji.jpg');
+   background-position: cover;
+   background-size: cover;
+         
+}
+
+form{
+    margin-top: 20%;
+    border-radius: 12px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    max-width: 500px;
+}
+fieldset{
+    text-align: start;
+    padding:20px;
+    margin:20px;
+    justify-content: flex-start;
+    background-image: url('pussy.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 12px;;
+}
+img{
+    align-items:baseline;
+    justify-content:flex-start;
+
+}

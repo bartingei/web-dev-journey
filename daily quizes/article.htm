@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Aside Example</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        main {
+            flex: 3;
+            padding: 20px;
+        }
+        aside {
+            flex: 1;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-left: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-image:url('moon.jpg');color:#f4f4f4; padding: 2px; max-height:250px; background-clip: ;">
+    <main>
+        <h1>Welcome to My Blog</h1>
+        <p>This is the main content of the blog. Here you can write articles, stories, or any other type of content you want to share with your readers.</p>
+        <p>In this example, we're using the <code>&lt;aside&gt;</code> tag to create a sidebar with related information.</p>
+    </main>
+</div>
+    <aside>
+        <h2>About Me</h2>
+        <p>Hi, I'm Jane Doe, a web developer and blogger. I write about web development, programming, and technology.</p>
+        
+        <h2>Related Articles</h2>
+        <ul>
+            <li><a href="#">Understanding HTML Semantics</a></li>
+            <li><a href="#">CSS Grid Layout: A Comprehensive Guide</a></li>
+            <li><a href="#">JavaScript Basics for Beginners</a></li>
+        </ul>
+        
+        <h2>Follow Me</h2>
+        <p>Follow me on social media:</p>
+        <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">GitHub</a></li>
+        </ul>
+    </aside>
+</body>
+</html>

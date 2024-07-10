@@ -1,0 +1,71 @@
+<!DOCTYPE html>  
+ <html>  
+ <head>  
+  <title>Form in HTML</title>  
+  <style>
+    .part1{
+      position: relative;
+      max-width: 250px;
+    }
+    .part2{
+      position: relative;
+      max-width: 250px;
+      align-content: flex-end;
+      justify-content: end;
+      align-self: flex-end;
+    }
+    .part3{
+      max-width: 250px;
+    }
+    
+  </style>
+</head>  
+ <body>  
+     <h2>Registration form</h2>  
+    <form>  
+     <fieldset class="part1">  
+      <div id="first">
+       <legend>User personal information</legend>  
+       <label>Enter your full name</label><br>  
+       <input type="text" name="name"><br>  
+        <label>Enter your email</label><br>  
+       <input type="email" name="email"><br>  
+        <label>Enter your password</label><br>  
+        <input type="password" name="pass"><br>  
+        <label>confirm your password</label><br>  
+        <input type="password" name="pass"><br>  
+        <br><label>Enter your gender</label><br>  
+        <input type="radio" id="gender" name="gender" value="male"/>Male  <br>  
+        <input type="radio" id="gender" name="gender" value="female"/>Female <br/>    
+        <input type="radio" id="gender" name="gender" value="others"/>others <br/>   
+         <br>Enter your Address:<br>  
+        <textarea></textarea><br>  
+        <input type="submit" value="sign-up">  
+      </div>
+     </fieldset>  
+
+     <fieldset class="part2">
+      <legend>this is a second fieldset</legend>
+      <h1>hello world</h1>
+     </fieldset>
+
+    <fieldset class="part3">
+      <legend>hobbies section</legend>
+      <form>  
+    	Hobby:<br>  
+                <input type="checkbox" id="cricket" name="cricket" value="cricket"/>  
+                <label for="cricket">Cricket</label> <br>  
+                 <input type="checkbox" id="football" name="football" value="football"/>  
+                <label for="football">Football</label> <br>  
+                <input type="checkbox" id="hockey" name="hockey" value="hockey"/>  
+                <label for="hockey">Hockey</label>  
+    </form>      
+  </fieldset>   
+  <figure> 
+  <img src="pussy.jpg" alt="picture of a cat" width="250px" >
+  <figcaption src="pussy.jpg" alt="picture of a cat" width="250px">this is a cat's pic</figcaption>
+</figure>
+  </form>  
+ </body>  
+</html>  
+        
