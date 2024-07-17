@@ -1,0 +1,272 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Page Layout</title> 
+    <style> 
+        .tops{
+            display:flex;
+            padding:2px;
+            margin: 5px;
+            justify-content: space-between;
+        }
+        .h1 { 
+            font-size:40px; 
+            color:#009900; 
+            font-weight:bold; 
+            margin-right:190px;
+        } 
+        .head2 { 
+            font-size:17px; 
+            margin-left:10px; 
+            margin-bottom:15px; 
+        } 
+        .logo{
+            width: 50px;
+            height: 50px;
+            border-radius: 20px;
+        }
+        body { 
+            margin: 0 auto; 
+            background-position:center; 
+            background-size: contain;
+        } 
+      
+        .menu {    
+            position: relative; 
+            top: 0; 
+            background-color: #009900; 
+            padding:10px 0px 10px 0px; 
+            color:white; 
+            margin: 0 auto; 
+            overflow: hidden; 
+            max-height: 15px;
+            margin-top: 0px;
+        } 
+        .menu a { 
+            float: left; 
+            color: white; 
+            text-align: center; 
+            padding: 9px 10px; 
+            text-decoration: none;
+            list-style-type: none; 
+            font-size: 10px; 
+            font-family: sans-serif;
+        } 
+        .menu a:hover{
+           color: red;
+           transition: 0.5s linear;
+           transform-style: inherit;
+            
+        }
+        .search-bar{
+
+            float:left;
+            margin-left: 30px;
+        }
+        .submit{
+           background-color:#009900;
+           border-radius: 13px;
+           color:bisque;
+           border: 1px solid black;
+           float:none;
+           position:relative;
+        }
+        .submit:hover{
+            color:red;
+            transition-duration: 0.5s;
+        }
+
+        footer { 
+            width: 100%; 
+            bottom: 0px; 
+            background-color: #009900; 
+            color: #fff; 
+            position: relative; 
+            padding-top:20px; 
+            padding-bottom:50px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;   
+           
+        } 
+       .container{
+       display:flex;
+       margin:30px;
+       }
+       .sidebar{
+        flex:1;
+        background-color:antiquewhite ;
+        margin-right: 10px;
+       }
+       
+
+       .content {
+            flex: 3;
+            padding: 20px;
+            background-color: #f4f4f4;
+            margin-right: 10px;
+        }
+        .tried-image{
+        flex 3;
+        margin-right:30px;
+        
+        }
+        .second-image{
+          flex:3;
+          margin-left: 30px;
+        }
+        
+        .images{
+        display: flex;
+        padding:30px;
+        background-color: antiquewhite
+        
+        ;
+        }
+        body{
+          background-color: #333;
+        }
+
+        .aside {
+            flex: 1;
+            padding: 20px;
+            background-color: #ddd;
+        }
+    </style> 
+</head> 
+  
+<body> 
+      
+    <!-- Header Section -->
+    <header class="tops"> 
+        <img src="logo.jpg" alt="logo" class="logo">
+        <div><span class="h1">GeeksforGeeks</span> <br> <span class="p">A computer science portal for geeks</span></div> 
+         
+    </header> 
+      
+    <!-- Menu Navigation Bar -->
+    <div class="menu"> 
+        <a href="#home">HOME</a> 
+        <a href="#news">NEWS</a> 
+        <a href="#notification">NOTIFICATIONS</a> 
+        <a href="#login">LOGIN</a> 
+        <label for="search"></label>
+        <div class="search-bar">
+        <input type="search" placeholder="search" class="search-bar">
+        <input type="button" value="submit" class="submit" >
+        </div>
+    </div> 
+      
+    <!-- Body section -->
+    <div class = "container">
+    <div class="sidebar">
+    Python Tutorial | Learn Python Programming
+Last Updated : 25 Jun, 2024
+This Programming Language Python Tutorial is very well suited for beginners and also for experienced programmers. This specially designed free Python tutorial will help you learn Python programming most efficiently, with all topics from basics to advanced (like Web-scraping, Django, Learning, etc.) with examples.
+
+What is Python?
+Python is a high-level, general-purpose, and very popular programming language. Python programming language (latest Python 3) is being used in web development, and Machine Learning applications, along with all cutting-edge technology in Software Industry. Python language is being used by almost all tech-giant companies like – Google, Amazon, Facebook, Instagram, Dropbox, Uber… etc.
+
+Writing your first Python Program to Learn Python Programming
+There are two ways you can execute your Python program:
+
+First, we write a program in a file and run it one time.
+Second, run a code line by line.
+    </div>
+    <div class="content">
+    Python Tutorial | Learn Python Programming
+Last Updated : 25 Jun, 2024
+This Programming Language Python Tutorial is very well suited for beginners and also for experienced programmers. This specially designed free Python tutorial will help you learn Python programming most efficiently, with all topics from basics to advanced (like Web-scraping, Django, Learning, etc.) with examples.
+
+What is Python?
+Python is a high-level, general-purpose, and very popular programming language. Python programming language (latest Python 3) is being used in web development, and Machine Learning applications, along with all cutting-edge technology in Software Industry. Python language is being used by almost all tech-giant companies like – Google, Amazon, Facebook, Instagram, Dropbox, Uber… etc.
+
+Writing your first Python Program to Learn Python Programming
+There are two ways you can execute your Python program:
+
+First, we write a program in a file and run it one time.
+Second, run a code line by line.Python Tutorial | Learn Python Programming
+Last Updated : 25 Jun, 2024
+This Programming Language Python Tutorial is very well suited for beginners and also for experienced programmers. This specially designed free Python tutorial will help you learn Python programming most efficiently, with all topics from basics to advanced (like Web-scraping, Django, Learning, etc.) with examples.
+
+What is Python?
+Python is a high-level, general-purpose, and very popular programming language. Python programming language (latest Python 3) is being used in web development, and Machine Learning applications, along with all cutting-edge technology in Software Industry. Python language is being used by almost all tech-giant companies like – Google, Amazon, Facebook, Instagram, Dropbox, Uber… etc.
+
+Writing your first Python Program to Learn Python Programming
+There are two ways you can execute your Python program:
+
+First, we write a program in a file and run it one time.
+Second, run a code line by line.Python Tutorial | Learn Python Programming
+Last Updated : 25 Jun, 2024
+This Programming Language Python Tutorial is very well suited for beginners and also for experienced programmers. This specially designed free Python tutorial will help you learn Python programming most efficiently, with all topics from basics to advanced (like Web-scraping, Django, Learning, etc.) with examples.
+
+What is Python?
+Python is a high-level, general-purpose, and very popular programming language. Python programming language (latest Python 3) is being used in web development, and Machine Learning applications, along with all cutting-edge technology in Software Industry. Python language is being used by almost all tech-giant companies like – Google, Amazon, Facebook, Instagram, Dropbox, Uber… etc.
+
+Writing your first Python Program to Learn Python Programming
+There are two ways you can execute your Python program:
+
+First, we write a program in a file and run it one time.
+Second, run a code line by line.Python Tutorial | Learn Python Programming
+Last Updated : 25 Jun, 2024
+This Programming Language Python Tutorial is very well suited for beginners and also for experienced programmers. This specially designed free Python tutorial will help you learn Python programming most efficiently, with all topics from basics to advanced (like Web-scraping, Django, Learning, etc.) with examples.
+
+What is Python?
+Python is a high-level, general-purpose, and very popular programming language. Python programming language (latest Python 3) is being used in web development, and Machine Learning applications, along with all cutting-edge technology in Software Industry. Python language is being used by almost all tech-giant companies like – Google, Amazon, Facebook, Instagram, Dropbox, Uber… etc.
+
+Writing your first Python Program to Learn Python Programming
+There are two ways you can execute your Python program:
+
+First, we write a program in a file and run it one time.
+Second, run a code line by line.Python Tutorial | Learn Python Programming
+Last Updated : 25 Jun, 2024
+This Programming Language Python Tutorial is very well suited for beginners and also for experienced programmers. This specially designed free Python tutorial will help you learn Python programming most efficiently, with all topics from basics to advanced (like Web-scraping, Django, Learning, etc.) with examples.
+
+What is Python?
+Python is a high-level, general-purpose, and very popular programming language. Python programming language (latest Python 3) is being used in web development, and Machine Learning applications, along with all cutting-edge technology in Software Industry. Python language is being used by almost all tech-giant companies like – Google, Amazon, Facebook, Instagram, Dropbox, Uber… etc.
+
+Writing your first Python Program to Learn Python Programming
+There are two ways you can execute your Python program:
+
+First, we write a program in a file and run it one time.
+Second, run a code line by line.
+    </div>
+    <div class="aside">
+    Python Tutorial | Learn Python Programming
+Last Updated : 25 Jun, 2024
+This Programming Language Python Tutorial is very well suited for beginners and also for experienced programmers. This specially designed free Python tutorial will help you learn Python programming most efficiently, with all topics from basics to advanced (like Web-scraping, Django, Learning, etc.) with examples.
+
+What is Python?
+Python is a high-level, general-purpose, and very popular programming language. Python programming language (latest Python 3) is being used in web development, and Machine Learning applications, along with all cutting-edge technology in Software Industry. Python language is being used by almost all tech-giant companies like – Google, Amazon, Facebook, Instagram, Dropbox, Uber… etc.
+
+Writing your first Python Program to Learn Python Programming
+There are two ways you can execute your Python program:
+
+First, we write a program in a file and run it one time.
+Second, run a code line by line.
+    </div>
+    </div> 
+<div class="images">
+    <div class="tried-image">
+    <img src="pitch.jpg" alt="pitch" width="200px" height="150px">
+    </div>
+    <div class="second-image">
+    <img src="pitch.jpg" alt="pitch" width="200px" height="150px">
+    </div>
+    </div>    
+      
+    <!-- Footer Section -->
+   <footer>
+        <p>Contact us: <a href="mailto:info@example.com">info@example.com</a> | Phone: (123) 456-7890</p>
+        <p>
+            Follow us:
+            <a href="https://www.facebook.com" target="_blank">Facebook</a> |
+            <a href="https://www.twitter.com" target="_blank">Twitter</a> |
+            <a href="https://www.instagram.com" target="_blank">Instagram</a> |
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+        </p>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+</body> 
+</html>                     

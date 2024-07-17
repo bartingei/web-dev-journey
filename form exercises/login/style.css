@@ -8,7 +8,7 @@ body{
     margin-left: 120px;
     margin-right: 120px;
    background-image: url('emoji.jpg');
-   background-position: cover;
+   background-position: center;
    background-size: cover;
          
 }
