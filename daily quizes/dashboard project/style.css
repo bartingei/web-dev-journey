@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.logo{
+    float: left;
+    position:absolute;
+    margin-left: 20px;
+
+}
+
+.heading {
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color: rgb(90, 95, 95);
+    height: 60px;
+    text-align: center;
+}
+.heading p{
+    color:white;
+}
+
+header {
+    font-weight: bolder;
+    font-size: 30px;
+    color: brown;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space between search bar and nav items */
+    align-items: center; /* Center items vertically */
+    background-color: aliceblue;
+    padding: 10px 20px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input[type="search"] {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar ul li a:hover {
+    color: red;
+    transition: 0.5s;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 150px); /* Adjust height considering header and navbar */
+    overflow: hidden;
+}
+
+.content {
+    flex: 4;
+    background-color: gainsboro;
+    margin: 10px 5px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+}
+
+.aside {
+    flex: 1;
+    background-color: rgb(90, 95, 95);
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    margin: 10px 5px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+}
+
+.aside h2 {
+    color: red; /* Red color for headings */
+}
+
+.aside p {
+    color: #dcdcdc; /* Less bright color for paragraph text */
+}
+
+.founders img {
+    max-width: 100%;
+    height: auto;
+}
+
+a:hover {
+    color: goldenrod;
+    transition: 0.5s;
+}
+
+body {
+    background-color: rgb(90, 95, 95);
+}
+
+footer {
+    background-color: rgb(70, 75, 75); /* Darker background to match the aside section */
+    color: rgb(255, 255, 255); /* White text color */
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #dcdcdc; /* Less bright color for links */
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: red; /* Red color on hover */
+    transition: 0.5s;
+}

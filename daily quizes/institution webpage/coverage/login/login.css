@@ -1,0 +1,60 @@
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:350px;
+    border: 1px solid rgb(144, 138, 138);
+    border-radius:12px;
+    padding:10px 20px;
+    margin-left:30%;
+    margin-right:30%;
+    background: rgba(255,255,255,0.7);
+    position: absolute;
+}
+.container a{
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+    cursor:pointer;
+}
+.container a:hover{
+    text-decoration: underline;
+    color:blue;
+}
+
+.form{
+    cursor:pointer;
+   
+}
+.form h3{
+    color:rgb(18, 17, 17);
+}
+.form li{
+    list-style-type: none;
+}
+button{
+    width:100%;
+    height:40px;;
+    text-align: center;
+    padding-top: 10px;
+    border:none;
+    cursor:grab;
+    font-weight: bold;    
+}
+button:hover{
+    color: blue;
+}
+body{
+    display:flex;
+    margin:0;
+    padding:0;
+    background-image: url('messy.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height:100vh;
+    width:100%;
+    overflow:hidden;
+    justify-content: center;
+    align-items: center;
+}

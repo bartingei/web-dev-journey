@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxic-Society</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('toxic.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        
+        .container {
+            display: flex;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .icon {
+            color: orange;
+            display: inline-block;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 10px;
+            padding: 9px;
+            text-shadow: 4px 4px 6px;
+            text-overflow: ellipsis;
+        }
+
+        nav {
+            margin: 0;
+            height: auto;
+        }
+
+        nav ul {
+            display: flex;
+            text-decoration: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: orange;
+        }
+
+        .body-content {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            color: white;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 80px;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: 50px;
+            color: orange;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .content p {
+            font-family: sans-serif;
+            text-align: center;
+            font-style: italic;
+            font-size: 20px;
+            padding: 20px;
+        }
+
+        .button {
+            padding: 20px;
+        }
+
+        .btn {
+            padding: 15px;
+            border-radius: 12px;
+            color: orange;
+            background-color: transparent;
+            transition: 0.5s;
+            position:relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            color: rgb(255, 255, 255);
+            background: rgba(87, 84, 84, 0.9);
+        }
+
+        form {
+            background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            text-align: center;
+            margin: 30px auto;
+            max-height: max-content;
+        }
+
+        img {
+            background: linear-gradient(rgba(0,0,0,0.7),gba(0,0,0,0.7));
+            border-radius: 12px;
+        }
+
+        form input {
+            padding: 10px;
+            margin: 20px 0;
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        form h3 {
+            color: orange;
+        }
+        
+        form a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            transition: 0.3s ease-in-out;
+        }
+        form button {
+            color: white;
+            background-color: transparent;
+            border: 2px solid white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s;
+        }
+        
+        form button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: orange;
+            transition: left 0.4s;
+            z-index: 0;
+        }
+        
+        form button:hover::before {
+            left: 0;
+        }
+        
+        form button:hover {
+            color: black; /* Change text color on hover */
+        }
+        
+        form button span {
+            position: relative;
+            z-index: 1; /* Ensure text is above the ::before element */
+        }
+        
+
+        form a:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-buttons a {
+            text-decoration: none;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            padding: 10px;
+            display: inline-block;
+            transition: 0.3s ease;
+        }
+
+        .social-buttons a:hover {
+            background: orange;
+        }
+
+        .social-buttons i {
+            font-size: 20px;
+        }
+
+        @media (min-width: 769px) {
+            .body-content {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+                margin-top: 120px;
+            }
+
+            .content, form {
+                margin: 20px;
+            }
+
+            .content {
+                text-align: left;
+                flex: 3;
+            }
+
+            form {
+                text-align: center;
+                flex: 1;
+                margin-top:150px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+                position:relative
+            }
+
+            nav ul {
+                flex-direction: left;
+                align-items: center;
+            }
+
+            nav ul li {
+                padding: 10px;
+            }
+
+            .body-content {
+                padding: 10px;
+                margin-top: 10px;
+            }
+
+            .content {
+                width: 100%;
+                margin: 0;
+            }
+
+            .content h2 {
+                font-size: 32px;
+            }
+
+            .content p {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            form {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            form input {
+                width: calc(100% - 40px);
+            }
+
+            .button {
+                margin: 0;
+                padding: 10px;
+            }
+
+            .btn {
+                width: calc(100% - 40px);
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            <h1>Toxic-Society</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">FAQ's</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="body-content">
+        <div class="content">
+            <h2>Embrace the Chaos: Unleash Your Inner Toxicity.</h2>
+            <p>
+                Welcome to Toxic-Society. In a world that often masks its true nature with polished facades and sanitized realities, we dare to venture into the raw and unfiltered. At Toxic-Society, we believe that understanding and confronting toxicity head-on is the key to unlocking genuine transformation and self-awareness.
+            </p>
+            <div class="button">
+                <button type="button" class="btn">JOIN US</button> ....as we embrace what we love 😈💀💀.
+            </div>
+        </div>
+        <form action="#">
+            <h3>LOGIN</h3>
+            <img src="emote.jpg" alt="my icon" height="120px;">
+            <input type="email" id="email" placeholder="email" required><br><br>
+            <input type="password" id="password" placeholder="password" required><br><br>
+            <button type="button">Login</button><br><br>
+            <p>Don't have an account? <a href="#"><span>Sign up</span></a></p>
+            <div class="social-buttons">
+                <a href="#" aria-label="Login with Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Login with Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Login with Google"><i class="fab fa-google"></i></a>
+                <a href="#" aria-label="Login with LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </form>
+    </div>
+</body>
+<footer></footer>
+</html>

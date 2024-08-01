@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <form action="#">
+                <img src="mmu logo.jpg" alt="logo of mmu" height="100px">
+                <h3>STUDENT LOGIN</h3>
+                <label for="Reg no"></label>
+                <input type="Registration number" id="Reg no" placeholder="Registration no" required><br><br>
+                <label for="Password"></label>
+                <input type="password" id="password" placeholder="Password"><br><br>
+                <div><button type="submit" value="Loginbutton">login<br><br></div>
+                <ul class="links">
+                    <li> <a href="#">Forgot Password</a></li><br>
+                    <li><a href="#">Parent Login</a></li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById("loginbutton").addEventListener('click', function(){
+            alert('button clicked');
+        });
+    </script>
+</body>
+</html>

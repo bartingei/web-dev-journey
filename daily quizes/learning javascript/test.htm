@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+
+
+   <script>
+      var html = 90;
+      var javascript = 65;
+      var php = 90;
+      var mysql = 80;
+      var css = 77;
+      var total = html + javascript + php + mysql + css ;
+      var average = total / 5;
+
+      document.write(" the total is: " + total + "<br>");
+
+     if(average >= 80 && average <= 100){
+      document.write("Distinction" + "<br><br>");
+     }
+     else if(average >= 60 && average <= 79){
+      document.write("Credit" + "<br><br>");
+     }
+     else if(average >= 45 && average <= 59){
+      document.write("Pass" + "<br><br>");
+     }
+     else if(average >= 30 && average <= 44){
+      document.write("Refer" + "<br><br>");
+     }
+     else if(average >= 0 && average <= 29){
+      document.write("Fail" + "<br><br>");
+     }
+     else{
+      document.write("No Result" + "<br><br>");
+     }
+
+   </script>
+   
+</body>
+</html>
