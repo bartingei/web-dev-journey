@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var input = '%';
+        var num1=20,num2=10;
+        var results;
+   
+
+        switch (input) {
+            case '+':
+            results = num1+num2;
+            document.writeln("sum = ",results);
+            break;
+
+            case '-':
+            result = num1-num2;
+            document.writeln("difference = ",result);
+            break;
+
+            case '*':
+            result = num1*num2;
+            document.writeln("product = ",result);
+            break;
+
+             case '/':
+            result = num1/num2;
+            document.writeln("division = ",result);
+            break;
+
+            case '%':
+            result = num1%num2;
+            document.writeln("modulus = ",result);
+            break;
+
+            default:
+            result = "invalid character";
+            break;
+        }
+    </script>
+</body>
+</html>

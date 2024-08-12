@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .form-container {
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            background-color: antiquewhite;
+            border: 1px solid black;
+        }
+        form input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container rectangle">
+            <form>
+                <h2>Area of a rectangle</h2>
+                <label for="width">Width</label>
+                <input type="number" id="rectangle-width" placeholder="Input the width" name="width" required><br>
+                <label for="length">Length</label>
+                <input type="number" id="rectangle-length" placeholder="Input the length" name="length" required><br>
+                <input type="button" value="Calculate the area" onclick="areaOfRectangle()">
+            </form>
+            <p id="rectangle-result"></p>
+        </div>
+        <div class="form-container circle">
+            <form>
+                <h2>Area of a circle</h2>
+                <label for="radius">Radius</label>
+                <input type="number" id="circle-radius" placeholder="Input the radius" required><br>
+                <input type="button" value="Calculate the area" onclick="areaOfCircle()">
+            </form>
+            <p id="circle-result"></p>
+        </div>
+        <div class="form-container triangle">
+            <form>
+                <h2>Area of a triangle</h2>
+                <label for="height">Height</label>
+                <input type="number" id="triangle-height" placeholder="Input the height" required><br> 
+                <label for="base">Base</label>
+                <input type="number" id="triangle-base" placeholder="Input the base" required><br> 
+                <input type="button" value="Calculate the area" onclick="areaOfTriangle()">
+            </form>
+            <p id="triangle-result"></p>
+        </div>
+    </div>
+    <script>
+        function areaOfRectangle() {
+            var length = document.getElementById("rectangle-length").value;
+            var width = document.getElementById("rectangle-width").value;
+            var area = length * width;
+            document.getElementById("rectangle-result").textContent = "Area of rectangle: " + area;
+        }
+
+        function areaOfCircle() {
+            var radius = document.getElementById('circle-radius').value;
+            var area = Math.PI * radius * radius;
+            document.getElementById('circle-result').textContent = "Area of circle: " + area;
+        }
+
+        function areaOfTriangle() {
+            var base = document.getElementById('triangle-base').value;
+            var height = document.getElementById('triangle-height').value;
+            var area = 0.5 * base * height;
+            document.getElementById('triangle-result').textContent = "Area of triangle: " + area;
+        }
+    </script>
+</body>
+</html>
