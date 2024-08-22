@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="hub.css">
+</head>
+<body>
+
+    <form action="#">
+        <h2>Login</h2><br>
+        <input type="email" placeholder="username" required> email<br>
+        <input type="password" placeholder="password" > password:<br>
+
+    </form>
+
+    <script>
+        function Emp(admission, name, age, salary){
+            this.admission = admission;
+            this.name = name;
+            this.age = age;
+            this.salary = salary;
+
+            this.changesalary = changesalary;
+            function changesalary(othersalary){
+                this.salary = othersalary; 
+            }
+        }
+
+        let e = new Emp(13206, "Johnpaul", 19, 300000);
+
+        console.log(e);
+
+        e.changesalary = 350000;
+
+        console.log(e);
+
+
+    </script>
+
+    <script>
+        //array literal
+
+        var emp = ["david", "emman", "kelvin"];
+        for(i = 0; i < emp.length; i++){
+            document.write(emp[i] + "<br>");
+        }
+    </script>
+    
+</body>
+</html>
