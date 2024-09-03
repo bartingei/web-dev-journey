@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>doing calculations via javascript</title>
+    <style>
+        body{
+            padding:20px;
+            width:80%;
+            justify-content: center;
+            align-items: center;
+
+        }
+        form{
+            margin-left: 30%;
+        }
+        form input{
+            text-align: justify;
+            margin-top: 20px;
+        }
+        form button{
+            text-align: justify;
+            margin-top: 20px;
+        
+        }
+        .form2{
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" class="form1">
+        <fieldset>
+        <legend>area of a rectangle</legend>
+        Length: <input type="number" id="length" ><br>
+        Width: <input type="number" id="width" ><br>
+        results: <input type="number" id="results"><br>
+
+        <button type="button" onclick="rectanglearea()" value="calculate">calculate</button>
+        <button type="reset" value ="clear">clear</button>
+
+        <script>
+            function rectanglearea(){
+                var length = document.getElementById('length').value;
+                var width = document.getElementById('width').value;
+                var results = length * width;
+                document.getElementById('results').value = results;              
+            } 
+        </script>
+
+    </fieldset>
+
+    </form><br>
+
+    <form action="#" class="form2">
+        <fieldset>
+            <legend>area of a circle</legend>
+           Radius : <input type="number" id="radius" ><br>
+           Results: <input type="number" id="area"><br>
+           <button type="button" onclick="areaofcircle()" value="calculate">calculate</button>
+        <button type="reset" value ="clear">clear</button>
+        <script>
+            function areaofcircle(){
+                var radius = document.getElementById('radius').value;
+                var area = 3.142 * radius * radius;
+                document.getElementById('area').value = area;
+
+                
+            }
+        </script>
+        </fieldset>
+    </form>
+</body>
+</html>
