@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form.css">
+    <style>
+        .form-section{
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.9)),url('https://cdn.openart.ai/uploads/image_tTsov0oz_1725440788859_raw.jpg');
+            background-position: center;
+            background-size: cover;
+            width:100%;
+            color:white;
+
+
+        }
+        fieldset{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-section">
+        <fieldset>
+            <legend>Join Us Today!</legend>
+            <p>Ready to start your journey with MBOGI COOP? Fill out the form below to become a member and begin your path to financial empowerment.</p>
+            <form action="submit-form.php" method="post">
+                <label for="name">Full Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+                
+                <label for="email">Email Address:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" required><br><br>
+                
+                <label for="interest">Area of Interest:</label><br>
+                <select id="interest" name="interest">
+                    <option value="savings">Savings & Investment</option>
+                    <option value="loans">Loans</option>
+                    <option value="membership">Membership</option>
+                    <option value="future">Future Expansions</option>
+                </select><br><br>
+                
+                <button type="submit" class="button">Submit</button>
+            </form>
+        </fieldset>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box; /* Added for better box sizing */
+}
+body {
+    background-color: rgba(255, 255, 255, 0.413);
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: orange;
+    padding: 10px;
+}
+nav {
+    flex: 1;
+}
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+nav li {
+    margin-right: 10px;
+}
+nav a {
+    font-size: 14px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+nav a:hover {
+    color: rgba(255, 255, 255, 0.806);
+    background-color: black;
+}
+.search {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    padding: 5px 10px;
+}
+.search input {
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.button1 {
+    background-color: orange;
+    color: black;
+    transition: ease-in-out 0.4s;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.button1:hover {
+    color: white;
+    background-color: black;
+}
+.welcome {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://cdn.openart.ai/uploads/image_5H2qJH5Z_1725386388985_raw.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+.welcome h1, .welcome p {
+    margin: 10px;
+    text-align: center;
+}
+.button {
+    background-color: orange;
+    color: white;
+    transition: ease-in-out 0.4s;
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+}
+.button:hover {
+    background-color: black;
+    color: white;
+}
+.history {
+    padding: 20px;
+    background-color: rgb(230, 163, 38);
+}
+.history-content {
+    width: 90%;
+    margin: 0 auto;
+}
+.history h2, .history p {
+    margin-left: 10px;
+}
+.images {
+    display: flex;
+    flex-wrap: wrap;
+}
+.img1, .img2, .img3 {
+    flex: 1;
+    height: 150px;
+    margin: 5px;
+}
+.mission {
+    background-color:black;
+    background-size: contain;
+    color: white;
+    font-style: italic;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.msn {
+    margin: 10px 20px;
+}
+fieldset {
+    border: 2px solid orange;
+    padding: 5px 14px;
+    font-size: 12px;
+    width:50%;
+}
+footer {
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://cdn.openart.ai/uploads/image_Uw9lB3RD_1725386889194_raw.jpg');
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid white;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-content .social-media a {
+    margin: 0 10px;
+}
+
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .search {
+        width: 100%;
+        margin-top: 10px;
+        justify-content: center;
+    }
+    .search input {
+        width: 70%;
+    }
+    .img1{
+        height:200px;
+    }
+    .img2{
+        height:200px;
+    }
+    .img3{
+        height:200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .search {
+        width: 100%;
+        margin-top: 10px;
+        justify-content: center;
+    }
+    .search input {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+    nav ul {
+        display: none; /* Hide navbar links */
+    }
+    .navbar-toggle {
+        display: block;
+        cursor: pointer;
+        color: white;
+        font-size: 24px;
+        margin: 10px 0;
+    }
+    .navbar-toggle.show + ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: orange;
+    }
+}

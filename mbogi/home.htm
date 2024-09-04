@@ -5,171 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Welcome to MBOGI COOP - Empowering young individuals through collective savings and low-interest loans.">
     <script type="text/javascript" src="new.js"></script>
+    <link rel="stylesheet" href="home.css">
     <title>MBOGI COOP</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-            height: auto;
-        }
-        ul {
-            display: flex;
-            flex-direction: row;
-            list-style: none;
-            transition: ease-in-out 0.3s;
-        }
-        nav a {
-            font-size: 12px;
-            transition: ease-in-out 0.5s;
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-            padding: 10px 15px;
-            display: inline-block;
-        }
-        nav a:hover {
-            color: rgba(255, 255, 255, 0.806);
-            background-color: black;
-        }
-        a:active {
-            color: blue;
-        }
-        body {
-            background-color: rgba(255, 255, 255, 0.413);
-            overflow: scroll;
-        }
-        .welcome {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://cdn.openart.ai/uploads/image_5H2qJH5Z_1725386388985_raw.jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            justify-content: center;
-            color: white;
-        }
-        .welcome h1, p {
-            margin: 30px;
-        }
-        .container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            background-color: orange;
-        }
-        .search {
-            display: flex;
-            flex-direction: row;
-            margin-top: 5px;
-            padding: 5px 10px;
-        }
-        .search input {
-            height: 20px;
-            cursor: pointer;
-        }
-        .history {
-            height: 60vh;
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 14px;
-            background-color: rgb(230, 163, 38);
 
-        }
-        .history-content{
-            width:90%;
-        }
-        .history h2, .history p{
-            margin-left: 100px;
-        }
-        .button {
-            background-color: orange;
-            color: white;
-            transition: ease-in-out .4s;
-            width: 100px;
-            height: 40px;
-            margin-left: 30px;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: black;
-            color: white;
-        }
-        .button1 {
-            background-color: orange;
-            color: black;
-            transition: ease-in-out .4s;
-            width: 60px;
-            height: 20px;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-        .button1:hover {
-            color: white;
-            background-color: black;
-        }
-        .images {
-            display: flex;
-            flex-direction: row;
-        }
-        .img1, .img2, .img3 {
-            flex: 1;
-            height: 150px;
-        }
-        .mission {
-            background-color:black;
-            background-size: contain;
-            color: white;
-            font-style: italic;
-            height: 60vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .msn {
-            margin: 10px 20px;
-        }
-        fieldset {
-            border: 2px solid orange;
-            padding: 5px 14px;
-            font-size: 12px;
-            width:50%;
-        }
-        footer {
-            background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://cdn.openart.ai/uploads/image_Uw9lB3RD_1725386889194_raw.jpg');
-            background-position: bottom center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid white;
-            height:30vh;
-            justify-content: center;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .footer-content .social-media {
-            margin-bottom: 10px;
-        }
-        .footer-content .social-media a {
-            margin: 0 10px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <nav>
+            <span class="navbar-toggle" id="navbar-toggle">☰</span>
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About Us</a></li>
@@ -188,35 +33,37 @@
     </div>
     <div class="welcome">
         <h1>MBOGI COOP</h1>
-        <p><u>Welcome to our webpage.<br><br>A home where possibilities is a norm.</u></p>
+        <p>"Welcome to our digital home—where possibilities aren’t just dreams, they’re the norm! Get ready to turn your ‘what ifs’ into ‘what’s next!’ 🎉"</p>
         <button type="button" class="button">Join Us</button>
     </div>
     <div class="history">
         <div class="history-content">
-        <h2>Welcome to MBOGI COOP: Let’s Build Our Future Together 💥</h2>
-        <p>
-            Hey there, future changemaker! 🌟 At MBOGI COOP, we’re all about the hustle, the grind, and building that financial future we all dream about. We’re a squad of like-minded, ambitious friends on campus, coming together to flip the script on the usual and make our money work for us—together.
-        </p>
-        <p>
-            Think of this website as your go-to spot for everything MBOGI COOP. From getting in on our monthly savings plan to tracking your growth and seeing those interest gains roll in—this is where it all happens. Every month, you stack up your savings, and at the end of the year, we split the profits based on what you’ve contributed. It’s that simple, and it’s all about making sure everyone wins.
-        </p>
-        <p>
-            But wait, there’s more! 🚀 Starting next year, we’re rolling out low-interest loans to help you kickstart your next big idea or just handle life’s unexpected twists. And guess what? These loans aren’t just for members; they’re open to others too. No more drowning in crazy high interest rates—MBOGI COOP has your back.
-        </p>
-        <p>
-            We’re looking for the bold, the resilient, the ones who don’t quit when things get tough. If you’re ready to take charge of your financial future and be part of a community that’s all about growth, transparency, and support, then MBOGI COOP is your crew. Let’s build something epic together—because when we unite, there’s no stopping us! 💪🔥
-        </p>
-    </div>
-    </div>
-    <div class="lastimage">
-    <div class="mission">
-        <fieldset class="msn">
-            <h2>Mission</h2>
+            <h2>Welcome to MBOGI COOP: Let’s Build Our Future Together 💥</h2>
             <p>
-                At MBOGI COOP, we’re on a mission to make financial freedom the new cool! 🚀 We’re all about uniting young, ambitious minds to save together, support each other, and watch our dreams take flight. Our goal? To break the poverty cycle and turn our collective hustle into shared success. With transparency, teamwork, and a dash of fun, we’re here to build a future where everyone’s winning. Join us and let’s crush it together! 💪✨
+                Hey there, future changemaker! 🌟 At MBOGI COOP, we’re all about the hustle, the grind, and building that financial future we all dream about. We’re a squad of like-minded, ambitious friends on campus, coming together to flip the script on the usual and make our money work for us—together.
             </p>
-        </fieldset>
+            <p>                Think of this website as your go-to spot for everything MBOGI COOP. From getting in on our monthly savings plan to tracking your growth and seeing those interest gains roll in—this is where it all happens. Every month, you stack up your savings, and at the end of the year, we split the profits based on what you’ve contributed. It’s that simple, and it’s all about making sure everyone prospers together. 
+            </p>
+            <p>
+                We’re not just about money, though. We’re about community, trust, and building something bigger than ourselves. With low-interest loans to help you invest in your future, and a supportive network to back you up, MBOGI COOP is where your dreams meet opportunity. 💸🚀
+            </p>
+        </div>
+        <div class="images">
+            <img src="https://cdn.openart.ai/uploads/image_jNjqIh2M_1725439180076_raw.jpg" alt="Group of students saving together" class="img1">
+            <img src="https://cdn.openart.ai/uploads/image_kGDBB874_1725439230752_raw.jpg" alt="Young entrepreneurs discussing ideas" class="img2">
+            <img src="https://cdn.openart.ai/uploads/image_q6pE4Jgn_1725439734754_raw.jpg" alt="Campus event for financial literacy" class="img3">
+        </div>
     </div>
+
+    <div class="mission">  
+         <fieldset class="fieldset2">
+        <legend>OUR MISSION</legend>
+        <p>To empower young individuals to take control of their financial futures through collective savings, mutual support, and sustainable growth.</p>
+    </fieldset>
+    </div>
+
+   
+
     <footer>
         <div class="footer-content">
             <div class="social-media">
@@ -242,6 +89,17 @@
             <p style="color:white">© 2024 MBOGI COOP. All rights reserved.</p>
         </div>
     </footer>
-</div>
+
+    <script>
+        document.getElementById('navbar-toggle').addEventListener('click', function() {
+            this.classList.toggle('show');
+            const nav = document.querySelector('nav ul');
+            if (this.classList.contains('show')) {
+                nav.style.display = 'flex';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
