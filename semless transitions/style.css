@@ -1,0 +1,18 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent default scrolling */
+}
+
+.section {
+    height: 100vh; /* Each section takes full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s ease-in-out;
+}
+
+.first { background-color: #ff5733; } /* Page 1 */
+.second { background-color: #33ff57; } /* Page 2 */
+.third { background-color: #3357ff; } /* Page 3 */
