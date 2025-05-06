@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umoja High School - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-school {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .logo-circle {
+            background-color: #1e40af;
+        }
+        .btn-primary {
+            background-color: #1e40af;
+        }
+        .btn-primary:hover {
+            background-color: #1e3a8a;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden md:flex">
+        <!-- Left Side - School Image -->
+        <div class="md:w-1/2 bg-school text-white p-12 flex flex-col items-center justify-center">
+            <div class="logo-circle w-24 h-24 rounded-full flex items-center justify-center mb-6">
+                <i class="fas fa-graduation-cap text-white text-4xl"></i>
+            </div>
+            <h1 class="text-3xl font-bold mb-2">Umoja High School</h1>
+            <p class="text-center mb-6">Striving for Excellence in Education</p>
+            <div class="w-full bg-white bg-opacity-20 p-4 rounded-lg">
+                <p class="text-sm"><i class="fas fa-quote-left mr-2"></i>Education is the most powerful weapon which you can use to change the world.<i class="fas fa-quote-right ml-2"></i></p>
+                <p class="text-right text-sm mt-2">- Nelson Mandela</p>
+            </div>
+        </div>
+        
+        <!-- Right Side - Login Form -->
+        <div class="md:w-1/2 p-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-1">Welcome Back</h2>
+            <p class="text-gray-600 mb-8">Please login to access your account</p>
+            
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-user text-gray-400"></i>
+                        </div>
+                        <input type="text" id="username" name="username" required class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your username">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </div>
+                        <input type="password" id="password" name="password" required class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password">
+                        <button type="button" class="absolute right-3 top-2 text-gray-400 hover:text-gray-600" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                    </div>
+                    <div class="text-sm">
+                        <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Forgot password?</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <button type="submit" class="btn-primary w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+            
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">Or contact support</span>
+                    </div>
+                </div>
+                
+                <div class="mt-6 grid grid-cols-2 gap-3">
+                    <div class="flex items-center justify-center p-2 border border-gray-300 rounded-md hover:bg-gray-50 cursor-pointer">
+                        <i class="fab fa-whatsapp text-green-500 mr-2"></i>
+                        <span class="text-sm">WhatsApp</span>
+                    </div>
+                    <div class="flex items-center justify-center p-2 border border-gray-300 rounded-md hover:bg-gray-50 cursor-pointer">
+                        <i class="fas fa-envelope text-red-500 mr-2"></i>
+                        <span class="text-sm">Email</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center text-sm text-gray-500">
+                <p>© 2023 Umoja High School. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const icon = this.querySelector('i');
+            if (password.type === 'password') {
+                password.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                password.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically validate and send the data to your server
+            // For demonstration, we'll just show an alert
+            const username = document.getElementById('username').value;
+            alert(`Login attempt for ${username}. In a real application, this would validate credentials and redirect.`);
+            
+            // In a real application, you would redirect after successful login:
+            // window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

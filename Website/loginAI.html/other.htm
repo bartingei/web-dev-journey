@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muigai Supermarket - Your One-Stop Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .category-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        .cart-item:hover {
+            background-color: #f8fafc;
+        }
+        .hero-banner {
+            background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Login Page (Initial View) -->
+    <div id="login-page" class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <div class="text-center mb-8">
+                <img src="https://via.placeholder.com/150x80?text=MUIGAI+SUPERMARKET" alt="Muigai Supermarket Logo" class="mx-auto h-20">
+                <h1 class="text-3xl font-bold text-gray-800 mt-4">Welcome Back</h1>
+                <p class="text-gray-600">Sign in to your account</p>
+            </div>
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                    <input type="email" id="email" name="email" required 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="password" name="password" required 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember" name="remember" 
+                            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="remember" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                    </div>
+                    <a href="#" class="text-sm text-blue-600 hover:text-blue-500">Forgot password?</a>
+                </div>
+                <button type="submit" 
+                    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition">
+                    Sign In
+                </button>
+            </form>
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">
+                    Don't have an account? 
+                    <a href="#" class="text-blue-600 hover:text-blue-500 font-medium">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Website (Hidden Initially) -->
+    <div id="main-website" class="hidden">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <img src="https://via.placeholder.com/150x50?text=MUIGAI" alt="Muigai Supermarket Logo" class="h-10">
+                        <div class="hidden md:block ml-10">
+                            <div class="flex space-x-4">
+                                <a href="#" onclick="showPage('home')" class="text-gray-800 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                                <a href="#" onclick="showPage('products')" class="text-gray-800 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Products</a>
+                                <a href="#" onclick="showPage('cart')" class="text-gray-800 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Cart</a>
+                                <a href="#" onclick="showPage('contact')" class="text-gray-800 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <button onclick="showPage('cart')" class="p-1 rounded-full text-gray-800 hover:text-blue-600 focus:outline-none">
+                                <i class="fas fa-shopping-cart text-xl"></i>
+                                <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">0</span>
+                            </button>
+                        </div>
+                        <div class="ml-4 relative">
+                            <button id="user-menu" class="flex items-center text-sm rounded-full focus:outline-none">
+                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32" alt="User profile">
+                            </button>
+                            <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Orders</a>
+                                <a href="#" onclick="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home Page -->
+        <div id="home-page" class="page-container">
+            <div class="hero-banner relative text-white">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                            Welcome to Muigai Supermarket
+                        </h1>
+                        <p class="mt-6 max-w-lg mx-auto text-xl">
+                            Your one-stop shop for all your grocery needs in Kenya
+                        </p>
+                        <div class="mt-10">
+                            <a href="#" onclick="showPage('products')" class="inline-block bg-white border border-transparent rounded-md py-3 px-8 font-medium text-blue-700 hover:bg-gray-100">
+                                Shop Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8">Featured Products</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Featured products will be loaded here -->
+                </div>
+            </div>
+
+            <div class="bg-gray-100 py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="lg:text-center">
+                        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Why Choose Us</h2>
+                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                            Better Shopping Experience
+                        </p>
+                    </div>
+
+                    <div class="mt-10">
+                        <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                            <div class="bg-white p-6 rounded-lg shadow">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                                    <i class="fas fa-truck text-xl"></i>
+                                </div>
+                                <div class="mt-5">
+                                    <h3 class="text-lg font-medium text-gray-900">Fast Delivery</h3>
+                                    <p class="mt-2 text-base text-gray-500">
+                                        Get your groceries delivered to your doorstep within 24 hours in Nairobi.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-6 rounded-lg shadow">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                                    <i class="fas fa-tag text-xl"></i>
+                                </div>
+                                <div class="mt-5">
+                                    <h3 class="text-lg font-medium text-gray-900">Best Prices</h3>
+                                    <p class="mt-2 text-base text-gray-500">
+                                        We offer competitive prices on all our products with regular discounts.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-6 rounded-lg shadow">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                                    <i class="fas fa-check-circle text-xl"></i>
+                                </div>
+                                <div class="mt-5">
+                                    <h3 class="text-lg font-medium text-gray-900">Quality Guaranteed</h3>
+                                    <p class="mt-2 text-base text-gray-500">
+                                        All our products are carefully selected to ensure the highest quality standards.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Page -->
+        <div id="products-page" class="page-container hidden">
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <!-- Categories Sidebar -->
+                    <div class="w-full md:w-1/4 bg-white p-4 rounded-lg shadow">
+                        <h3 class="font-bold text-lg mb-4">Categories</h3>
+                        <div class="space-y-2">
+                            <button onclick="filterProducts('all')" class="category-btn active w-full text-left px-4 py-2 rounded-md hover:bg-gray-100">All Products</button>
+                            <button onclick="filterProducts('fruits')" class="category-btn w-full text-left px-4 py-2 rounded-md hover:bg-gray-100">Fruits & Vegetables</button>
+                            <button onclick="filterProducts('dairy')" class="category-btn w-full text-left px-4 py-2 rounded-md hover:bg-gray-100">Dairy & Eggs</button>
+                            <button onclick="filterProducts('meat')" class="category-btn w-full text-left px-4 py-2 rounded-md hover:bg-gray-100">Meat & Poultry</button>
+                            <button onclick="filterProducts('bakery')" class="category-btn w-full text-left px-4 py-2 rounded-md hover:bg-gray-100">Bakery</button>
+                            <button onclick="filterProducts('beverages')" class="category-btn w-full text-left px-4 py-2 rounded-md hover:bg-gray-100">Beverages</button>
+                            <button onclick="filterProducts('snacks')" class="category-btn w-full text-left px-4 py-2 rounded-md hover:bg-gray-100">Snacks</button>
+                            <button onclick="filterProducts('household')" class="category-btn w-full text-left px-4 py-2 rounded-md hover:bg-gray-100">Household</button>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="w-full md:w-3/4">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold text-gray-900">Our Products</h2>
+                            <div class="relative">
+                                <select id="sort-products" onchange="sortProducts()" class="block appearance-none bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="name-asc">Sort by: Name (A-Z)</option>
+                                    <option value="name-desc">Sort by: Name (Z-A)</option>
+                                    <option value="price-asc">Sort by: Price (Low-High)</option>
+                                    <option value="price-desc">Sort by: Price (High-Low)</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Page -->
+        <div id="cart-page" class="page-container hidden">
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8">Your Shopping Cart</h2>
+                
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Cart Items -->
+                    <div class="lg:w-2/3">
+                        <div id="cart-items" class="bg-white rounded-lg shadow divide-y divide-gray-200">
+                            <!-- Cart items will be loaded here -->
+                            <div class="p-8 text-center">
+                                <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
+                                <p class="text-gray-500">Your cart is empty</p>
+                                <a href="#" onclick="showPage('products')" class="mt-4 inline-block text-blue-600 hover:text-blue-800">Continue Shopping</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Order Summary -->
+                    <div class="lg:w-1/3">
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Order Summary</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Subtotal</span>
+                                    <span id="subtotal" class="text-gray-900">KSh 0.00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Delivery Fee</span>
+                                    <span id="delivery-fee" class="text-gray-900">KSh 200.00</span>
+                                </div>
+                                <div class="border-t border-gray-200 pt-4">
+                                    <div class="flex justify-between">
+                                        <span class="text-lg font-medium text-gray-900">Total</span>
+                                        <span id="total" class="text-lg font-medium text-gray-900">KSh 200.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="showPage('checkout')" class="mt-6 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition">
+                                Proceed to Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Page -->
+        <div id="checkout-page" class="page-container hidden">
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8">Checkout</h2>
+                
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Delivery Information -->
+                    <div class="lg:w-2/3">
+                        <div class="bg-white rounded-lg shadow p-6 mb-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Delivery Information</h3>
+                            <form class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
+                                        <input type="text" id="first-name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                    <div>
+                                        <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                                        <input type="text" id="last-name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                                    <input type="tel" id="phone" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                    <input type="email" id="checkout-email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="address" class="block text-sm font-medium text-gray-700">Delivery Address</label>
+                                    <textarea id="address" rows="3" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                </div>
+                                <div>
+                                    <label for="delivery-time" class="block text-sm font-medium text-gray-700">Preferred Delivery Time</label>
+                                    <select id="delivery-time" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                        <option>Anytime</option>
+                                        <option>Morning (8am - 12pm)</option>
+                                        <option>Afternoon (12pm - 5pm)</option>
+                                        <option>Evening (5pm - 9pm)</option>
+                                    </select>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="save-info" name="save-info" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                    <label for="save-info" class="ml-2 block text-sm text-gray-700">Save this information for next time</label>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Payment Method</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <input id="mpesa" name="payment-method" type="radio" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                    <label for="mpesa" class="ml-3 block text-sm font-medium text-gray-700">
+                                        <div class="flex items-center">
+                                            <img src="https://via.placeholder.com/80x30?text=M-PESA" alt="M-Pesa" class="h-6 ml-2">
+                                            <span class="ml-2">Pay with M-Pesa</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="card" name="payment-method" type="radio" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                    <label for="card" class="ml-3 block text-sm font-medium text-gray-700">
+                                        <div class="flex items-center">
+                                            <i class="far fa-credit-card text-xl ml-1"></i>
+                                            <span class="ml-3">Credit/Debit Card</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="cash" name="payment-method" type="radio" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                    <label for="cash" class="ml-3 block text-sm font-medium text-gray-700">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-money-bill-wave text-xl"></i>
+                                            <span class="ml-3">Cash on Delivery</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Order Summary -->
+                    <div class="lg:w-1/3">
+                        <div class="bg-white rounded-lg shadow p-6 sticky top-4">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Your Order</h3>
+                            <div id="checkout-items" class="divide-y divide-gray-200">
+                                <!-- Order items will be loaded here -->
+                            </div>
+                            <div class="border-t border-gray-200 pt-4 mt-4 space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Subtotal</span>
+                                    <span id="checkout-subtotal" class="text-gray-900">KSh 0.00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Delivery Fee</span>
+                                    <span id="checkout-delivery" class="text-gray-900">KSh 200.00</span>
+                                </div>
+                                <div class="flex justify-between pt-2">
+                                    <span class="font-medium text-gray-900">Total</span>
+                                    <span id="checkout-total" class="font-medium text-gray-900">KSh 200.00</span>
+                                </div>
+                            </div>
+                            <button onclick="placeOrder()" class="mt-6 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition">
+                                Place Order
+                            </button>
+                            <a href="#" onclick="showPage('cart')" class="mt-3 inline-block w-full text-center text-blue-600 hover:text-blue-800 text-sm">
+                                Back to Cart
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page-container hidden">
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <div class="bg-white shadow rounded-lg overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Contact Form -->
+                        <div class="py-10 px-6 sm:px-10">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Contact Us</h2>
+                            <form id="contact-form" class="space-y-6">
+                                <div>
+                                    <label for="contact-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                    <input type="text" id="contact-name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="contact-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                    <input type="email" id="contact-email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="contact-phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                                    <input type="tel" id="contact-phone" name="phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="contact-subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                                    <input type="text" id="contact-subject" name="subject" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
+                                    <textarea id="contact-message" name="message" rows="4" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Contact Information -->
+                        <div class="bg-gray-50 py-10 px-6 sm:px-10">
+                            <h3 class="text-lg font-medium text-gray-900 mb-6">Our Information</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-map-marker-alt text-gray-400 text-xl"></i>
+                                    </div>
+                                    <div class="ml-3 text-base text-gray-500">
+                                        <p>Muigai Supermarket</p>
+                                        <p>123 Nairobi Street</p>
+                                        <p>Nairobi, Kenya</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-phone-alt text-gray-400 text-xl"></i>
+                                    </div>
+                                    <div class="ml-3 text-base text-gray-500">
+                                        <p>+254 712 492105</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-envelope text-gray-400 text-xl"></i>
+                                    </div>
+                                    <div class="ml-3 text-base text-gray-500">
+                                        <p>johnpaulkibet3@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-clock text-gray-400 text-xl"></i>
+                                    </div>
+                                    <div class="ml-3 text-base text-gray-500">
+                                        <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
+                                        <p>Saturday - Sunday: 9:00 AM - 6:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-10">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4">Follow Us</h3>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <i class="fab fa-facebook-f text-xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <i class="fab fa-twitter text-xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <i class="fab fa-instagram text-xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <i class="fab fa-linkedin-in text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white">
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Muigai Supermarket</h3>
+                        <p class="text-gray-300 text-sm">
+                            Your trusted supermarket in Kenya offering quality products at affordable prices.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" onclick="showPage('home')" class="text-gray-300 hover:text-white text-sm">Home</a></li>
+                            <li><a href="#" onclick="showPage('products')" class="text-gray-300 hover:text-white text-sm">Products</a></li>
+                            <li><a href="#" onclick="showPage('cart')" class="text-gray-300 hover:text-white text-sm">Cart</a></li>
+                            <li><a href="#" onclick="showPage('contact')" class="text-gray-300 hover:text-white text-sm">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white text-sm">FAQs</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white text-sm">Shipping Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white text-sm">Returns & Refunds</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white text-sm">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Subscribe to our newsletter for the latest updates and offers.
+                        </p>
+                        <form class="flex">
+                            <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-md text-gray-800 focus:outline-none">
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 focus:outline-none">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="mt-12 pt-8 border-t border-gray-700">
+                    <p class="text-gray-300 text-sm text-center">
+                        &copy; 2025 Muigai Supermarket. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Database of products with real images
+        const products = [
+            // Fruits & Vegetables (10 items)
+            { id: 1, name: "Apples (1kg)", price: 150, category: "fruits", image: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Fresh red apples from Kenya highlands" },
+            { id: 2, name: "Bananas (1 bunch)", price: 80, category: "fruits", image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Ripe Kenyan bananas" },
+            { id: 3, name: "Oranges (1kg)", price: 120, category: "fruits", image: "https://images.unsplash.com/photo-1587854692152-fbe534965606?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Juicy oranges from Eastern Kenya" },
+            { id: 4, name: "Mangoes (1kg)", price: 100, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Sweet Kenyan mangoes in season" },
+            { id: 5, name: "Tomatoes (1kg)", price: 90, category: "fruits", image: "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Fresh farm tomatoes" },
+            { id: 6, name: "Onions (1kg)", price: 70, category: "fruits", image: "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Red onions for cooking" },
+            { id: 7, name: "Potatoes (1kg)", price: 85, category: "fruits", image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Fresh Irish potatoes" },
+            { id: 8, name: "Avocados (1pc)", price: 50, category: "fruits", image: "https://images.unsplash.com/photo-1594282486555-1c17bc0a4d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Hass avocados" },
+            { id: 9, name: "Pineapple (1pc)", price: 200, category: "fruits", image: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Sweet pineapples from Thika" },
+            { id: 10, name: "Watermelon (1pc)", price: 250, category: "fruits", image: "https://images.unsplash.com/photo-1563114778-03e8c7a08c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Large juicy watermelon" },
+            
+            // Dairy & Eggs (5 items)
+            { id: 11, name: "Fresh Milk (1L)", price: 70, category: "dairy", image: "https://images.unsplash.com/photo-1569893092148-34327f0c270d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Pasteurized fresh milk" },
+            { id: 12, name: "Eggs (1 tray)", price: 350, category: "dairy", image: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "30 eggs tray" },
+            { id: 13, name: "Butter (250g)", price: 180, category: "dairy", image: "https://images.unsplash.com/photo-1589985270826-4b7e8f0c123c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Salted butter" },
+            { id: 14, name: "Yogurt (500ml)", price: 120, category: "dairy", image: "https://images.unsplash.com/photo-1542833244-83248c4f8b0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Plain yogurt" },
+            { id: 15, name: "Cheese (200g)", price: 220, category: "dairy", image: "https://images.unsplash.com/photo-1562279713-7c6a9a6c8a2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Cheddar cheese block" },
+            
+            // Meat & Poultry (5 items)
+            { id: 16, name: "Beef (1kg)", price: 450, category: "meat", image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Fresh beef cuts" },
+            { id: 17, name: "Chicken (1kg)", price: 350, category: "meat", image: "https://images.unsplash.com/photo-1601342630314-8427c38bf5e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Whole chicken" },
+            { id: 18, name: "Pork (1kg)", price: 400, category: "meat", image: "https://images.unsplash.com/photo-1551218808-94e220e3d1a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Fresh pork cuts" },
+            { id: 19, name: "Fish (Tilapia)", price: 300, category: "meat", image: "https://images.unsplash.com/photo-1519708227418-4308a5d845cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Fresh tilapia fish" },
+            { id: 20, name: "Sausages (1kg)", price: 380, category: "meat", image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Beef sausages" },
+            
+            // Bakery (5 items)
+            { id: 21, name: "White Bread", price: 60, category: "bakery", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Fresh white bread loaf" },
+            { id: 22, name: "Brown Bread", price: 70, category: "bakery", image: "https://images.unsplash.com/photo-1608190003443-82f0b4cb65d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Whole wheat bread" },
+            { id: 23, name: "Croissant", price: 50, category: "bakery", image: "https://images.unsplash.com/photo-1550035403-1b3e9f9d7cc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Buttery croissant" },
+            { id: 24, name: "Cake (1kg)", price: 800, category: "bakery", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9647?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2089&q=80", description: "Vanilla sponge cake" },
+            { id: 25, name: "Donuts (6pcs)", price: 250, category: "bakery", image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2157&q=80", description: "Assorted donuts" },
+            
+            // Beverages (5 items)
+            { id: 26, name: "Coca Cola (500ml)", price: 60, category: "beverages", image: "https://images.unsplash.com/photo-1554866585-cd94860890f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80", description: "Carbonated soft drink" },
+            { id: 27, name: "Fanta (500ml)", price: 60, category: "beverages", image: "https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Orange flavored soda" },
+            { id: 28, name: "Bottled Water (1L)", price: 50, category: "beverages", image: "https://images.unsplash.com/photo-1544003484-3cd181d17917?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80", description: "Mineral water" },
+            { id: 29, name: "Juice (1L)", price: 150, category: "beverages", image: "https://images.unsplash.com/photo-1603569283847-aa6a0c1a4ae4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Mixed fruit juice" },
+            { id: 30, name: "Tea Leaves (100g)", price: 120, category: "beverages", image: "https://images.unsplash.com/photo-1559177697-5b5f0a5f5e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Kenyan tea leaves" },
+            
+            // Snacks (5 items)
+            { id: 31, name: "Potato Chips", price: 100, category: "snacks", image: "https://images.unsplash.com/photo-1576479638967-fa06a8e370d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Salt flavored potato chips" },
+            { id: 32, name: "Biscuits (200g)", price: 80, category: "snacks", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80", description: "Assorted biscuits" },
+            { id: 33, name: "Chocolate Bar", price: 120, category: "snacks", image: "https://images.unsplash.com/photo-1575377427642-087cf684f29d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Milk chocolate bar" },
+            { id: 34, name: "Peanuts (100g)", price: 60, category: "snacks", image: "https://images.unsplash.com/photo-1615486364400-86a90a8227a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Roasted peanuts" },
+            { id: 35, name: "Popcorn", price: 40, category: "snacks", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Ready-to-eat popcorn" },
+            
+            // Household (5 items)
+            { id: 36, name: "Toilet Paper (4 rolls)", price: 200, category: "household", image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a1d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Soft toilet paper" },
+            { id: 37, name: "Detergent (1kg)", price: 250, category: "household", image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a1d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Laundry detergent powder" },
+            { id: 38, name: "Dish Soap (500ml)", price: 150, category: "household", image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a1d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Liquid dishwashing soap" },
+            { id: 39, name: "Sponge (2pcs)", price: 50, category: "household", image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a1d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Scouring sponges" },
+            { id: 40, name: "Trash Bags (10pcs)", price: 120, category: "household", image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a1d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", description: "Large trash bags" },
+            
+            // Additional items to make 50
+            { id: 41, name: "Rice (1kg)", price: 150, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Basmati rice" },
+            { id: 42, name: "Wheat Flour (1kg)", price: 120, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "All-purpose wheat flour" },
+            { id: 43, name: "Sugar (1kg)", price: 100, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "White granulated sugar" },
+            { id: 44, name: "Salt (500g)", price: 40, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Iodized table salt" },
+            { id: 45, name: "Cooking Oil (1L)", price: 250, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Vegetable cooking oil" },
+            { id: 46, name: "Pasta (500g)", price: 120, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Spaghetti pasta" },
+            { id: 47, name: "Beans (1kg)", price: 180, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Red beans" },
+            { id: 48, name: "Maize Flour (1kg)", price: 90, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "White maize flour" },
+            { id: 49, name: "Peas (500g)", price: 150, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Green peas" },
+            { id: 50, name: "Lentils (500g)", price: 200, category: "fruits", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80", description: "Red lentils" }
+        ];
+
+        // Featured products (first 8 items)
+        const featuredProducts = products.slice(0, 8);
+
+        // Shopping cart
+        let cart = [];
+
+        // User data
+        let currentUser = null;
+
+        // DOM elements
+        const loginPage = document.getElementById('login-page');
+        const mainWebsite = document.getElementById('main-website');
+        const loginForm = document.getElementById('login-form');
+        const userMenu = document.getElementById('user-menu');
+        const userDropdown = document.getElementById('user-dropdown');
+        const cartCount = document.getElementById('cart-count');
+
+        // Page containers
+        const pages = {
+            'home': document.getElementById('home-page'),
+            'products': document.getElementById('products-page'),
+            'cart': document.getElementById('cart-page'),
+            'checkout': document.getElementById('checkout-page'),
+            'contact': document.getElementById('contact-page')
+        };
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Login form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Simple validation
+                if (email && password) {
+                    login(email);
+                }
+            });
+
+            // User menu toggle
+            userMenu.addEventListener('click', function() {
+                userDropdown.classList.toggle('hidden');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!userMenu.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.add('hidden');
+                }
+            });
+
+            // Load featured products on home page
+            loadFeaturedProducts();
+
+            // Load all products on products page
+            loadAllProducts();
+
+            // Contact form submission
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        });
+
+        // Functions
+        function login(email) {
+            currentUser = {
+                email: email,
+                name: email.split('@')[0]
+            };
+            
+            // Hide login page and show main website
+            loginPage.classList.add('hidden');
+            mainWebsite.classList.remove('hidden');
+            
+            // Show home page by default
+            showPage('home');
+        }
+
+        function logout() {
+            currentUser = null;
+            mainWebsite.classList.add('hidden');
+            loginPage.classList.remove('hidden');
+            userDropdown.classList.add('hidden');
+        }
+
+        function showPage(pageName) {
+            // Hide all pages
+            Object.values(pages).forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show the selected page
+            pages[pageName].classList.remove('hidden');
+            
+            // Update cart if showing cart page
+            if (pageName === 'cart') {
+                updateCartDisplay();
+            }
+            
+            // Update checkout if showing checkout page
+            if (pageName === 'checkout') {
+                updateCheckoutDisplay();
+            }
+            
+            // Close user dropdown if open
+            userDropdown.classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function loadFeaturedProducts() {
+            const container = document.querySelector('#home-page .grid');
+            container.innerHTML = '';
+            
+            featuredProducts.forEach(product => {
+                const productCard = createProductCard(product);
+                container.appendChild(productCard);
+            });
+        }
+
+        function loadAllProducts() {
+            const container = document.getElementById('products-grid');
+            container.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = createProductCard(product);
+                container.appendChild(productCard);
+            });
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card bg-white rounded-lg shadow overflow-hidden transition duration-300';
+            
+            card.innerHTML = `
+                <div class="relative pb-2/3 h-48">
+                    <img src="${product.image}" alt="${product.name}" class="absolute h-full w-full object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900">${product.name}</h3>
+                    <p class="mt-1 text-sm text-gray-500">${product.description}</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="font-bold text-gray-900">KSh ${product.price.toFixed(2)}</span>
+                        <button onclick="addToCart(${product.id})" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function filterProducts(category) {
+            const container = document.getElementById('products-grid');
+            container.innerHTML = '';
+            
+            // Update active category button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter products
+            let filteredProducts = products;
+            if (category !== 'all') {
+                filteredProducts = products.filter(product => product.category === category);
+            }
+            
+            // Display filtered products
+            filteredProducts.forEach(product => {
+                const productCard = createProductCard(product);
+                container.appendChild(productCard);
+            });
+        }
+
+        function sortProducts() {
+            const sortValue = document.getElementById('sort-products').value;
+            const container = document.getElementById('products-grid');
+            const currentProducts = Array.from(container.children);
+            
+            currentProducts.sort((a, b) => {
+                const aName = a.querySelector('h3').textContent;
+                const bName = b.querySelector('h3').textContent;
+                const aPrice = parseFloat(a.querySelector('span').textContent.replace('KSh ', ''));
+                const bPrice = parseFloat(b.querySelector('span').textContent.replace('KSh ', ''));
+                
+                switch (sortValue) {
+                    case 'name-asc':
+                        return aName.localeCompare(bName);
+                    case 'name-desc':
+                        return bName.localeCompare(aName);
+                    case 'price-asc':
+                        return aPrice - bPrice;
+                    case 'price-desc':
+                        return bPrice - aPrice;
+                    default:
+                        return 0;
+                }
+            });
+            
+            // Clear and re-add sorted products
+            container.innerHTML = '';
+            currentProducts.forEach(product => {
+                container.appendChild(product);
+            });
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            
+            // Check if product already in cart
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            else {
+                cart.push({
+                    ...product,
+                   
+</html>

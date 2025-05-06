@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripting</title>
+    <script language="JavaScript" >
+/*        //Placing info on the page 
+        document.writeln("<p>"+"Java Scripting in HTML"+"<br>");
+                
+        //variable - placeholder for data of diff data types whose values change when script is run
+        //keyword - phrases or words whose meanings and use are defined in the language in which they are defined
+        // definition of variables in js    var varname;  e.g. var age;
+        //initialization at declaration
+        var name = "johnpaul";
+        var age = 20;
+        
+        document.writeln("<p>"+"my name is "+name);
+
+        document.writeln("<p>"+"I am "+age+" years old"+"<br>");
+
+        //initialization at runtime
+        //prompt() this function is used typically for data input 
+        document.write("<p>"+"<hr>"+"This is initialization on runtime 👇")
+        var name2 = prompt("Enter your name: ");
+        var age2 = prompt("Enter your age: "); 
+        document.writeln("<p>"+"my name is "+name2);
+
+        document.writeln("<p>"+"I am "+age2+" years old"+"<br>");
+
+        //alert() function is used purely for displaying information
+        //it its also called information dialog box
+        alert("Welcome to JavaScript nigga!"); 
+
+        //confirm() mainly used to double check a choice
+        confirm("ARE YOU SURE YOU WANNA LEAVE");
+*/
+/*        //calculations lets use declaration at runtime
+        var num1 =  prompt("Enter value for num1 ");
+        var num2 =  prompt("Enter value for num2 ");
+    
+      
+        var result;
+        result = parseInt(num1) + parseInt(num2); //type conversion, converting the input string to int
+        document.write("Sum = "+ result);
+
+        //using if statements, statements are made up of operand e.g. age, operator e.g. == and operand e.g. 30
+        if (num1 > num2){
+            alert(num1 +" is greater than "+ num2);
+        }
+        else{
+            alert(num2 +" is greater than "+ num1);
+        }
+            */
+        
+
+        var unitPrice = 2000;
+        var quantity = 20;
+        var purchaseCost = unitPrice * quantity;
+        var amountPayable = purchaseCost - discount;
+        var discount;
+        document.write("Cost of purchase: "+purchaseCost);
+
+        if(purchaseCost < 5000){
+            alert("no discount");
+            document.write("amount payable is "+amountPayable);
+        }
+        else if(purchaseCost >= 5000 && purchaseCost < 10000 ){
+            discount = 0.05 * purchaseCost;
+            document.write("<p>"+"Discount: "+discount);
+            amountPayable = purchaseCost - discount;
+            document.write("<p>"+"amount payable is "+amountPayable);
+        }
+        else if(purchaseCost >= 10000 && purchaseCost < 50000 ){
+            discount = 0.1 * purchaseCost;
+            document.write("<p>"+"Discount: "+discount);
+            amountPayable = purchaseCost - discount;
+            document.write("<p>"+"amount payable is "+amountPayable);
+        }
+        else{
+            discount = 0.15 * purchaseCost;
+            document.write("<p>"+"Discount: "+discount);
+            amountPayable = purchaseCost - discount;
+            document.write("<p>"+"amount payable is "+amountPayable);            
+        }
+
+
+
+
+
+        
+    </script>
+</head>
+<body>
+   
+    
+</body>
+</html>

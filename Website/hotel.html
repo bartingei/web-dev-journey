@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safari Flavors | Authentic Kenyan Cuisine in Nairobi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'safari-gold': '#D4A017',
+                        'safari-green': '#2E8B57',
+                        'safari-brown': '#8B4513',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .menu-item:hover .menu-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .menu-overlay {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gallery-image {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Toast notification styles */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: #2E8B57;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.error {
+            background-color: #EF4444;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-utensils text-safari-gold text-3xl"></i>
+                    <span class="heading-font text-2xl font-bold text-safari-brown">Safari Flavors</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-safari-brown font-medium hover:text-safari-gold transition">Home</a>
+                    <a href="#about" class="text-safari-brown font-medium hover:text-safari-gold transition">About</a>
+                    <a href="#menu" class="text-safari-brown font-medium hover:text-safari-gold transition">Menu</a>
+                    <a href="#gallery" class="text-safari-brown font-medium hover:text-safari-gold transition">Gallery</a>
+                    <a href="#contact" class="text-safari-brown font-medium hover:text-safari-gold transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-safari-brown focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4 px-4">
+            <a href="#" class="block py-2 text-safari-brown hover:text-safari-gold">Home</a>
+            <a href="#about" class="block py-2 text-safari-brown hover:text-safari-gold">About</a>
+            <a href="#menu" class="block py-2 text-safari-brown hover:text-safari-gold">Menu</a>
+            <a href="#gallery" class="block py-2 text-safari-brown hover:text-safari-gold">Gallery</a>
+            <a href="#contact" class="block py-2 text-safari-brown hover:text-safari-gold">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <div class="flex items-center">
+            <span id="toast-message"></span>
+            <button id="toast-close" class="ml-4 text-white hover:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-image min-h-screen flex items-center justify-center text-white">
+        <div class="text-center px-4">
+            <h1 class="heading-font text-4xl md:text-6xl font-bold mb-6">Experience Authentic Kenyan Cuisine</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Savor the rich flavors of Nairobi at Safari Flavors, where tradition meets modern dining.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#reservation" class="bg-safari-gold hover:bg-safari-brown text-white font-bold py-3 px-8 rounded-full transition duration-300">Reserve a Table</a>
+                <a href="#menu" class="border-2 border-white hover:bg-white hover:text-safari-brown text-white font-bold py-3 px-8 rounded-full transition duration-300">View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Restaurant interior" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold text-safari-brown mb-6">Our Story</h2>
+                    <p class="text-gray-700 mb-4">Founded in 2010, Safari Flavors brings the authentic taste of Kenya to the heart of Nairobi. Our journey began with a simple mission: to celebrate Kenya's diverse culinary heritage through carefully crafted dishes made with locally sourced ingredients.</p>
+                    <p class="text-gray-700 mb-6">Today, we're proud to be one of Nairobi's most beloved dining destinations, offering a warm atmosphere where guests can enjoy traditional flavors with a contemporary twist.</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-award text-safari-gold text-2xl mr-2"></i>
+                            <span class="font-medium">Award-winning</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-leaf text-safari-green text-2xl mr-2"></i>
+                            <span class="font-medium">Locally Sourced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section class="py-16 bg-safari-green text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">Our Specialties</h2>
+                <p class="max-w-2xl mx-auto">Discover the unique flavors that make Safari Flavors a culinary landmark in Nairobi</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-drumstick-bite text-4xl mb-4 text-safari-gold"></i>
+                    <h3 class="heading-font text-xl font-bold mb-3">Nyama Choma</h3>
+                    <p>Our signature grilled meat, marinated with secret spices and served with kachumbari and ugali.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-fish text-4xl mb-4 text-safari-gold"></i>
+                    <h3 class="heading-font text-xl font-bold mb-3">Coastal Seafood</h3>
+                    <p>Fresh seafood from Kenya's coast, prepared with Swahili spices and coconut flavors.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-mortar-pestle text-4xl mb-4 text-safari-gold"></i>
+                    <h3 class="heading-font text-xl font-bold mb-3">Vegetarian Delights</h3>
+                    <p>Plant-based Kenyan dishes that celebrate the country's abundant produce and traditional recipes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-safari-brown mb-4">Our Menu</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our carefully curated selection of Kenyan favorites and contemporary creations</p>
+            </div>
+            
+            <div class="mb-12">
+                <h3 class="heading-font text-2xl font-bold text-safari-brown mb-6 border-b border-safari-gold pb-2">Starters</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="menu-item bg-gray-50 rounded-lg overflow-hidden shadow-md relative">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Samosas" class="w-full h-48 object-cover">
+                        <div class="menu-overlay absolute inset-0 bg-safari-brown bg-opacity-90 text-white p-6 flex flex-col justify-center">
+                            <h4 class="heading-font text-xl font-bold mb-2">Samosas Trio</h4>
+                            <p class="mb-4">Crispy pastry filled with spiced beef, vegetable, and lentil options</p>
+                            <span class="text-safari-gold font-bold">KES 850</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg">Samosas Trio</h4>
+                            <p class="text-gray-600">KES 850</p>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-gray-50 rounded-lg overflow-hidden shadow-md relative">
+                        <img src="https://i.pinimg.com/736x/56/3d/ee/563deed0bb2df9aaa6cc342407081633.jpg" alt="Sukuma Wiki" class="w-full h-48 object-cover">
+                        <div class="menu-overlay absolute inset-0 bg-safari-brown bg-opacity-90 text-white p-6 flex flex-col justify-center">
+                            <h4 class="heading-font text-xl font-bold mb-2">Sukuma Wiki Rolls</h4>
+                            <p class="mb-4">Collard greens stuffed with spiced maize and served with tomato chutney</p>
+                            <span class="text-safari-gold font-bold">KES 750</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg">Sukuma Wiki Rolls</h4>
+                            <p class="text-gray-600">KES 750</p>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-gray-50 rounded-lg overflow-hidden shadow-md relative">
+                        <img src="https://i.pinimg.com/236x/0d/61/f7/0d61f7f900d59f690685496e1b58395f.jpg" alt="Soup" class="w-full h-48 object-cover">
+                        <div class="menu-overlay absolute inset-0 bg-safari-brown bg-opacity-90 text-white p-6 flex flex-col justify-center">
+                            <h4 class="heading-font text-xl font-bold mb-2">Pumpkin & Peanut Soup</h4>
+                            <p class="mb-4">Creamy pumpkin soup with roasted peanuts and a hint of chili</p>
+                            <span class="text-safari-gold font-bold">KES 650</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg">Pumpkin & Peanut Soup</h4>
+                            <p class="text-gray-600">KES 650</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-12">
+                <h3 class="heading-font text-2xl font-bold text-safari-brown mb-6 border-b border-safari-gold pb-2">Main Courses</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="menu-item bg-gray-50 rounded-lg overflow-hidden shadow-md relative">
+                        <img src="https://i.pinimg.com/736x/69/29/a2/6929a2c14b46ded209e90c0752f35233.jpg" alt="Nyama Choma" class="w-full h-48 object-cover">
+                        <div class="menu-overlay absolute inset-0 bg-safari-brown bg-opacity-90 text-white p-6 flex flex-col justify-center">
+                            <h4 class="heading-font text-xl font-bold mb-2">Signature Nyama Choma</h4>
+                            <p class="mb-4">Tender grilled goat meat served with kachumbari and ugali</p>
+                            <span class="text-safari-gold font-bold">KES 1,850</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg">Signature Nyama Choma</h4>
+                            <p class="text-gray-600">KES 1,850</p>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-gray-50 rounded-lg overflow-hidden shadow-md relative">
+                        <img src="https://i.pinimg.com/236x/45/07/d5/4507d555cf94e5b9047f1a0fc3fee2fc.jpg" alt="Fish" class="w-full h-48 object-cover">
+                        <div class="menu-overlay absolute inset-0 bg-safari-brown bg-opacity-90 text-white p-6 flex flex-col justify-center">
+                            <h4 class="heading-font text-xl font-bold mb-2">Swahili Fish Curry</h4>
+                            <p class="mb-4">Fresh tilapia in coconut curry with fragrant spices and rice</p>
+                            <span class="text-safari-gold font-bold">KES 1,650</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg">Swahili Fish Curry</h4>
+                            <p class="text-gray-600">KES 1,650</p>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-gray-50 rounded-lg overflow-hidden shadow-md relative">
+                        <img src="https://i.pinimg.com/236x/bb/d5/25/bbd525c39674c256b5ae85bff413cfa3.jpg" alt="Pilau" class="w-full h-48 object-cover">
+                        <div class="menu-overlay absolute inset-0 bg-safari-brown bg-opacity-90 text-white p-6 flex flex-col justify-center">
+                            <h4 class="heading-font text-xl font-bold mb-2">Lamu Pilau</h4>
+                            <p class="mb-4">Fragrant rice cooked with beef, spices, and served with kachumbari</p>
+                            <span class="text-safari-gold font-bold">KES 1,450</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg">Lamu Pilau</h4>
+                            <p class="text-gray-600">KES 1,450</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="#" class="inline-block bg-safari-gold hover:bg-safari-brown text-white font-bold py-3 px-8 rounded-full transition duration-300">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-safari-brown mb-4">Gallery</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">A glimpse into the Safari Flavors experience</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="gallery-image overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Restaurant interior" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image overflow-hidden rounded-lg shadow-md">
+                    <img src="https://i.pinimg.com/474x/33/4a/0b/334a0bb691b23bbb0ef40f184e133f56.jpg" alt="Dining area" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Food presentation" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image overflow-hidden rounded-lg shadow-md">
+                    <img src="https://i.pinimg.com/236x/55/fd/63/55fd6363d724c3ec07205e307909a7a0.jpg" alt="Chef preparing food" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image overflow-hidden rounded-lg shadow-md">
+                    <img src="https://i.pinimg.com/736x/17/5c/19/175c19f891f4d76b61f5a7dac83ff804.jpg" alt="Outdoor seating" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image overflow-hidden rounded-lg shadow-md">
+                    <img src="https://i.pinimg.com/474x/fa/5f/5b/fa5f5b5b5aa0a283944607c67767d85d.jpg" alt="Bar area" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image overflow-hidden rounded-lg shadow-md">
+                    <img src="https://i.pinimg.com/736x/08/bf/6c/08bf6cd8deed80328817562c62bdaf21.jpg" alt="Special event" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image overflow-hidden rounded-lg shadow-md">
+                    <img src="https://i.pinimg.com/236x/d4/a6/34/d4a63469256b2cd28df4dcbaacdc29ef.jpg" alt="Dessert" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-safari-brown text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">What Our Guests Say</h2>
+                <p class="max-w-2xl mx-auto">Hear from those who've experienced the Safari Flavors difference</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-safari-gold text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="mb-6">"The Nyama Choma at Safari Flavors is hands down the best I've had in Nairobi. The meat was perfectly seasoned and tender, and the atmosphere made the experience even more special."</p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1674660418347-b40d4ca37830?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjU0fHxibGFjayUyMHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D" alt="Sarah K." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah K.</h4>
+                            <p class="text-sm text-gray-300">Local Food Critic</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-safari-gold text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="mb-6">"As a tourist, I wanted authentic Kenyan food, and Safari Flavors delivered beyond expectations. The staff were knowledgeable and made excellent recommendations."</p>
+                    <div class="flex items-center">
+                        <img src="https://media.istockphoto.com/id/2161579863/photo/happy-mature-man-outdoors.webp?a=1&b=1&s=612x612&w=0&k=20&c=Ju6n58Uvud0_9IzPQKcNaoLgzvLoNxPbLqmY5kf3k3Q=" alt="James T." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">James T.</h4>
+                            <p class="text-sm text-gray-300">International Visitor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-safari-gold text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="mb-6">"We hosted our anniversary dinner here and everything was perfect - the food, service, and ambiance. The coastal seafood platter was a highlight we'll never forget."</p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1499651681375-8afc5a4db253?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODJ8fGJsYWNrJTIwcGVvcGxlfGVufDB8fDB8fHww" alt="Amina W." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Amina W.</h4>
+                            <p class="text-sm text-gray-300">Regular Patron</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-safari-brown mb-4">Make a Reservation</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Book your table to experience Nairobi's finest Kenyan cuisine</p>
+            </div>
+            
+            <form class="bg-gray-50 p-8 rounded-lg shadow-md">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                        <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold">
+                    </div>
+                    <div>
+                        <label for="guests" class="block text-gray-700 font-medium mb-2">Number of Guests</label>
+                        <select id="guests" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold">
+                            <option value="1">1 person</option>
+                            <option value="2">2 people</option>
+                            <option value="3">3 people</option>
+                            <option value="4">4 people</option>
+                            <option value="5">5 people</option>
+                            <option value="6">6 people</option>
+                            <option value="7">7 people</option>
+                            <option value="8">8+ people</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="date" class="block text-gray-700 font-medium mb-2">Date</label>
+                        <input type="date" id="date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold">
+                    </div>
+                    <div>
+                        <label for="time" class="block text-gray-700 font-medium mb-2">Time</label>
+                        <select id="time" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold">
+                            <option value="12:00">12:00 PM</option>
+                            <option value="12:30">12:30 PM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="13:30">1:30 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="18:00">6:00 PM</option>
+                            <option value="18:30">6:30 PM</option>
+                            <option value="19:00">7:00 PM</option>
+                            <option value="19:30">7:30 PM</option>
+                            <option value="20:00">8:00 PM</option>
+                            <option value="20:30">8:30 PM</option>
+                            <option value="21:00">9:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="special-requests" class="block text-gray-700 font-medium mb-2">Special Requests</label>
+                    <textarea id="special-requests" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-safari-gold hover:bg-safari-brown text-white font-bold py-3 px-4 rounded-md transition duration-300">Book Table</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="heading-font text-3xl font-bold text-safari-brown mb-6">Contact Us</h2>
+                    <div class="mb-6">
+                        <h3 class="font-bold text-lg mb-2">Address</h3>
+                        <p class="text-gray-700">123 Mombasa Road<br>Nairobi, Kenya</p>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="font-bold text-lg mb-2">Opening Hours</h3>
+                        <p class="text-gray-700">Monday - Friday: 11:00 AM - 10:00 PM<br>
+                        Saturday - Sunday: 10:00 AM - 11:00 PM</p>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="font-bold text-lg mb-2">Contact Information</h3>
+                        <p class="text-gray-700 mb-2"><i class="fas fa-phone-alt mr-2 text-safari-gold"></i> +254 712492105</p>
+                        <p class="text-gray-700"><i class="fas fa-envelope mr-2 text-safari-gold"></i> info@safari-flavors.com</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-safari-brown text-white p-3 rounded-full hover:bg-safari-gold transition"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/toxic.toks/" class="bg-safari-brown text-white p-3 rounded-full hover:bg-safari-gold transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="bg-safari-brown text-white p-3 rounded-full hover:bg-safari-gold transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="bg-safari-brown text-white p-3 rounded-full hover:bg-safari-gold transition"><i class="fab fa-tripadvisor"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="heading-font text-2xl font-bold text-safari-brown mb-6">Send Us a Message</h3>
+                        <form id="contact-form">
+                            <div class="mb-4">
+                                <label for="contact-name" class="block text-gray-700 font-medium mb-2">Name *</label>
+                                <input type="text" id="contact-name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold">
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-email" class="block text-gray-700 font-medium mb-2">Email *</label>
+                                <input type="email" id="contact-email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold">
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-subject" class="block text-gray-700 font-medium mb-2">Subject *</label>
+                                <input type="text" id="contact-subject" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold">
+                            </div>
+                            <div class="mb-6">
+                                <label for="contact-message" class="block text-gray-700 font-medium mb-2">Message *</label>
+                                <textarea id="contact-message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-safari-gold"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-safari-gold hover:bg-safari-brown text-white font-bold py-3 px-4 rounded-md transition duration-300">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.808477395313!2d36.82155031475392!3d-1.2883858359792524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d664b20973%3A0x9f0a6e9b6a5e1b1e!2sNairobi%20CBD!5e0!3m2!1sen!2ske!4v1623840000000!5m2!1sen!2ske" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-safari-brown text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="heading-font text-xl font-bold mb-4">Safari Flavors</h3>
+                    <p class="mb-4">Celebrating Kenya's culinary heritage through authentic flavors and warm hospitality.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-safari-gold"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-safari-gold"><i class="fab fa-instagram"></i></a>
+                        <text-white hover:text-safari-gold"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="heading-font text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-safari-gold transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-safari-gold transition">About Us</a></li>
+                        <li><a href="#menu" class="hover:text-safari-gold transition">Our Menu</a></li>
+                        <li><a href="#gallery" class="hover:text-safari-gold transition">Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-safari-gold transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="heading-font text-xl font-bold mb-4">Opening Hours</h3>
+                    <ul class="space-y-2">
+                        <li>Monday - Friday: 11:00 AM - 10:00 PM</li>
+                        <li>Saturday - Sunday: 10:00 AM - 11:00 PM</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="heading-font text-xl font-bold mb-4">Newsletter</h3>
+                    <p class="mb-4">Subscribe to our newsletter for updates and special offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-safari-gold hover:bg-safari-green text-white px-4 py-2 rounded-r-md transition"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2025 Safari Flavors. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Form submission handling (would be connected to backend in real implementation)
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real implementation, this would send data to the server
+                alert('Thank you for your submission! We will contact you shortly.');
+                form.reset();
+            });
+        });
+
+        // Set minimum date for reservation to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+
+        // Contact form submission to send email
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const subject = document.getElementById('contact-subject').value;
+            const message = document.getElementById('contact-message').value;
+            
+            // Validate form
+            if (!name || !email || !subject || !message) {
+                showToast('Please fill in all required fields', 'error');
+                return;
+            }
+            
+            // Validate email format
+            if (!validateEmail(email)) {
+                showToast('Please enter a valid email address', 'error');
+                return;
+            }
+            
+            // Create mailto link
+            const mailtoLink = `mailto:johnpaulkibet3@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            )}`;
+            
+            // Open default email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            showToast('Your message has been prepared in your email client. Please send it to complete the process.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Email validation function
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Toast notification functions
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.className = `toast ${type === 'error' ? 'error' : ''} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
+
+        // Close toast when X is clicked
+        document.getElementById('toast-close').addEventListener('click', function() {
+            document.getElementById('toast').classList.remove('show');
+        });
+    </script>
+</body>
+</html>

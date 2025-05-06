@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function calc(){
+            if(document.simple.operator[1].checked){
+            document.simple.result.value=parseInt(document.simple.Number1.value) + parseInt(document.simple.Number2.value);
+        }
+            else if(document.simple.operator[0].checked){
+            document.simple.result.value=parseInt(document.simple.Number1.value) * parseInt(document.simple.Number2.value);
+        }
+        else if(document.simple.operator[2].checked){
+            document.simple.result.value=parseInt(document.simple.Number1.value) - parseInt(document.simple.Number2.value);
+        }
+        else{
+            document.simple.result.value=parseInt(document.simple.Number1.value) / parseInt(document.simple.Number2.value);
+        }
+    }
+
+
+    </script>
+
+</head>
+<body>
+    <form action="#" post="" name="simple">
+        <h1>Calculator</h1>
+        <table>
+            <tr>
+                <td>
+                    <label for="Number1">Number 1</label>
+                    
+                </td>
+                <td><input type="text" name="Number1" id="Number1" ></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Number2">Number 2</label>                   
+                </td>
+                <td><input type="text" name="Number2" id="Number2" ></td>
+                <!--  onmouseover="document.simple.Number2.value=''" this is used to clear the input field to clear when mouse goes over the area -->
+            </tr>
+            <tr>
+                <td><label for="result">Result</label></td>
+                <td><input type="text" name="result" id="result"></td>
+            </tr>
+            <tr>
+                <td><input type="radio" name = "operator" id="multiply" checked>    <!--use checked keyword to make sure that the multiply is selected by default-->
+                    <label for="multiply">Multiply</label>
+                </td>
+                <!--name of the radio buttons should be similar to enabke selection of only one -->
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name = "operator" id="add">
+                    <label for="add">Add</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name = "operator" id="Subtract">
+                    <label for="Subtract">Subtract</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name = "operator" id="Divide">
+                    <label for="Divide">Divide</label>
+                </td>
+            </tr>
+            <tr><td> <input type="button" value="Execute" onClick = "calc()" ></td></tr>    
+            <!--   onClick="document.simple.Number2.value='35'"   this is for setting the default value in the number2 field-->        
+        </table>
+    </form>
+</body>
+</html>
