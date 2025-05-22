@@ -9,12 +9,13 @@ a{
 }
 li,a{
     list-style-type: none;
-    color: rgb(240, 63, 19);
+    color: orange;
     transition: 0.3s ease-in-out;
 }
 a:hover{
     color: rgb(255, 255, 255);
 }
+
 ul{
     display: flex;
     gap: 20px;
@@ -35,7 +36,7 @@ nav{
     z-index: 1000;
 }
 .main_logo{
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(clothes.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)), url(clothes.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -146,7 +147,9 @@ gap: 20px;
 padding: 50px 20px;
 justify-content: center;
 min-height: 30vh;
+
 }
+
 
 .customer {
 background-color: rgb(52, 73, 92);
@@ -156,10 +159,10 @@ width: calc(25% - 20px);
 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 flex: 1 1 200px;
 color: white;
-transition: .3s ease-in-out;
+transition: .4s ease-in-out;
 }
 .customer:hover{
-    transform: translatey(-6px);
+    transform: translateY(-5px);
 }
 
 .customer-name {
@@ -220,9 +223,7 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 }
-.home_link{
-    
-}
+
 form{
     display: flex;
     flex-direction: column;
@@ -312,5 +313,4 @@ form label{
     display: flex;
     min-height: 100vh;
     margin: 0;
-}       
-        
+}

@@ -4,53 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+           
+        }
+        form{
+            padding: 30px;
+            border: 1px solid black;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            width: 60%;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 18px;
+            box-shadow: 12px 10px 40px rgba(0,0,0,0.3);
+            
+        }
+        form input{
+            margin-top: 30px;
+            width: 100%;
+            height: 50px;
+            background-color: rgb(240, 243, 245);
+            transition: 0.4s ease-out;
+        }
+        form input:hover{
+            background-color: rgba(255,255,255,0.8);
+        }
+        form textarea{
+            margin-top: 30px;
+            width: 100%;
+            height: 100px;
+            background-color: rgb(240, 243, 245);
+            transition: 0.4s ease-out;
+        }
+        form textarea:hover{
+             background-color: rgba(255,255,255,0.8);
+        }
+        form button{
+            margin-top: 30px;
+            width: 100%;
+            height: 50px;
+            transition: 0.5s ease-in-out;
+            background-color: orange;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        form button:hover{
+            background-color: rgb(18, 18, 39);
+            color: whitesmoke
+        }
+
+        .form-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(240, 243, 245);
+        }
+    a{
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+li,a{
+    list-style-type: none;
+    color: orange;
+    transition: 0.3s ease-in-out;
+}
+a:hover{
+    color: rgb(255, 255, 255);
+}
+ul{
+    display: flex;
+    gap: 20px;
+}
+.logo{
+    color: white;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+footer{
+    background-color: rgba(0, 0, 0, 0.8);            
+    padding: 10px 20px;
+    width: 100%;
+}
+footer, p{
+color: white;
+}
+.quick_links ul{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+    </style>
 </head>
-<body class="inq_body">
-    <!--<nav>
+<body>
+    <nav>
         <div class="logo">
-            <H1><a href="#">Kladi </a></H1>
+            <H1><a href="index.html">Kladi </a></H1>
          </div>         
          <div class="links">
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="product.html">Products</a></li>
                 <li><a href="enquire..html">Inquire</a></li>
 
             </ul>
          </div>
-     </nav>-->
-    
-    <form action="#" id="contact">
-        <div class="homelink">
-            <a href="index.html" >Back to Home Page</a>
+     </nav>
+
+    <div class="form-container">
+            <form action="https://formspree.io/f/mkgrzbrj"method="POST" id="contact">
+            <p>Hi, send us a message</p>
+            <h1>Hi, I would like to...</h1>
+            <p><input type="text" name="name" placeholder="Your Name" required></p>
+            <p><input type="email" name="Email" placeholder="Your Email" required></p>
+            <p><textarea name="message" id="message" placeholder="Your Message"></textarea></p>
+            <p><button type="submit" onclick="handleSubmit()">Submit</button></p>
         </div>
-        <div class="details">
-            <h1>Contact us.</h1>
-        </div>
-        <div class="details">
-            <label for="Name">Name:</label>
-            <input type="text" id="Name" name="Name">
-        </div>
-        <div class="details ">
-            <label for="Email: ">Email: </label>
-            <input type="text" id="Email" >
-        </div>
-        <div class="details">
-            <label for="details">Subject: </label>
-            <input type="text" id="Subject" name="Subject">
-        </div>
-        <div class="details">
-            <label for="message">Message</label>
-            <textarea name="message" id="message"></textarea>
-        </div>
-        <form>
-            <div class="details">
-                <button type="button" onclick="handleSubmit()">Submit</button>
-            </div>
-        </form>
-        <!--<footer>
+    </form>
+    </div>
+    <footer>
         
             <div class="quick_links">
                 <ul>
@@ -67,12 +156,16 @@
             <br><br>
             <hr>
             <center><p style="color:aliceblue">2025. All rights reserved</p></center>
-         </footer>-->
-        
-        <script>
-            function handleSubmit() {
-                alert("Thanks for your submission!");
-                document.getElementById("contact").reset();
+         </footer>
+    <script>
+            function handleSubmit(event) {
+               event.preventDefault();
+               alert("Thanks for your submission!");
+
+               document.getElementById("contact").reset();
+
+               window.location.href = "index.html";
+
             }
         </script>
 </body>

@@ -3,25 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>
+        CIT-227-081/2023, Johnpaul Kibet
+    </title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        body {
+        body{
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            margin: 30px;
+            border-radius: 30px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(clothes.jpg);
+            height: auto;
+            bottom: auto;
+            max-width: 60%;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* Keeps the rest of your content flowing top-down */
-    }
 
+        }
+        .about-section, h1{
+            color: red;
+            
+
+        }
+        .about-section, p{
+            text-align: left;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .about-section{
+            text-align: center;
+            padding: 50px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #story_{
+            background-color: rgb(255, 255, 255);
+            border-radius: 30px;
+        }
+        #storiez{
+            background-color: rgb(247, 240, 230);
+            border-top-right-radius: 350px;
+            border-bottom-right-radius: 350px;
+        }
+        footer, p{
+            text-align: center;
+        }
+        .mission-container{
+            background-color: rgb(227, 238, 228);
+            border-top-left-radius: 350px;
+            border-bottom-right-radius: 350px;
+            padding: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            margin: 30px;
+        }
+        .mission, h3{
+            color: red;
+        }
+        .mission,p{
+            text-align: left;
+            color: black;
+        }
+        .team-container{
+            background-color: rgb(219, 219, 164);
+            border-top-right-radius:350px ;
+            border-bottom-right-radius:350px ;
+        }
+        .team-pictures{
+            display: flex;
+            flex-direction: row;
+            margin: 30px;
+        }
+        .team1{
+            flex:1;
+            margin:30px;
+            border-radius: 30px;
+            box-shadow: 15px 16px 10px  rgba(0,0,0,0.4);
+            background-color: rgba(255,255,255,0.5);
+            transition: .3s ease-in-out;
+        }
+        .team1:hover{
+            background-color: rgba(255,255,255,0.9);
+            transform:translatey(-6px);
+        }
+        .team1, img{
+            border-radius: 40px;
+            padding: 25px;
+            align-items: center;
+            justify-content: center;
+            
+            
+        }
+        .team2{
+            flex:1;
+            margin:30px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 30px;
+            box-shadow: 15px 16px 10px  rgba(0,0,0,0.4);
+            transition: .3s ease-in-out;
+            
+        }
+        .team2:hover{
+            background-color: rgba(255,255,255,0.9);
+            transform: translatey(-6px);
+        }
+        .team2, img{
+            border-radius: 30px;
+            padding: 25px;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .team3{
+            flex:1;
+            margin:30px;
+            border-radius: 30px;
+            box-shadow: 15px 16px 10px  rgba(0,0,0,0.4);
+            background-color: rgba(255,255,255,0.5);
+            transition: .3s ease-in-out;
+        }
+        .team3:hover{
+            background-color: rgba(255,255,255,0.9);
+            transform:translatey(-6px);
+        }
+        .team3, img{
+            border-radius: 30px;
+            padding: 25px;
+            align-items: center;
+            justify-content: center;
+        }
+        .team4{
+            flex:1;
+            margin:30px;
+            border-radius: 30px;
+            box-shadow: 15px 16px 10px rgba(0,0,0,0.4) ;
+            background-color: rgba(255,255,255,0.5);
+            transition: .3s ease-in-out;
+        }
+        .team4:hover{
+            background-color: rgba(255,255,255,0.9);
+            transform:translatey(-6px);
+        }
+        .team4, img{
+            border-radius: 30px;
+            padding: 25px;
+            align-items: center;
+            justify-content: center;
+        }
+        .team-heading{
+            margin: 50px;
+            padding:30px;
+        }
+        @media(max-width:1000px){
+           .team-pictures{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding:20px;
+            margin-top: 30px;
+           }
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="logo">
-            <H1><a href="#">Kladi </a></H1>
+            <H1><a href="index.html">Kladi </a></H1>
          </div>         
          <div class="links">
             <ul>
@@ -138,12 +299,16 @@
                 <li><a href="about.html">About</a></li>
             </ul>
         </div>
+        <br>
+        <div class="contacts">
+            Email us: Kladi@gmail.com | call us: 0712492105
+        </div>
         <div class="social_media">
             <ul></ul>
         </div>
         <br><br>
         <hr>
-        <center><p>2025. All rights reserved</p></center>
+        <center><p style="color: aliceblue;">2025. All rights reserved</p></center>
      </footer>
 </body>
 </html>

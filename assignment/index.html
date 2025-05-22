@@ -2,15 +2,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    
     <link rel="shortcut icon" href="hood.jpg" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <title>
+        CIT-227-081/2023, Johnpaul Kibet
+    </title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+li,a{
+    list-style-type: none;
+    color: orange;
+    transition: 0.3s ease-in-out;
+}
+a:hover{
+    color: rgb(255, 255, 255);
+}
+a:active{
+    color: red;
+}
+ul{
+    display: flex;
+    gap: 20px;
+}
+.logo{
+    color: white;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.main_logo{
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)), url(clothes.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main_logo h1{
+    font-weight: bolder;
+    font-size: 60px;
+    color: white;
+    font-family: sans-serif;
     
+}
+.main_logo p{
+    font-family:cursive;
+    font-size: 18px;
+}
+.story{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:70vh;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 30px;
+}
+.story_image{
+    flex: 1;
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.story_image img{
+    max-height: 300px;
+    max-width: 100%;
+    border-radius: 18px;
+    object-fit: cover;
+}
+.speech{
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:large;
+}
+.speech p{
+    font-style: italic;
+    word-spacing: 4px;
+    color:black;
+}
+.speech_container{
+    padding: 10px 20px;
+}
+
+@media (max-width: 768px){
+    .story{
+        height: auto;
+        flex-direction: column;
+    }
+    .story_image, .speech{
+        max-width: 100%;
+    }
+    .story_image img{
+        width: 300px;
+        margin: 30px;
+    }
+    .reviews{
+        flex-direction: column;
+        height: auto;
+    }
+    
+}
+@media (max-width: 769px) {
+    .story{
+        width: 90%;
+    }
+   
+}
+@media (min-width: 769px) {
+.reviews {
+align-items: stretch; 
+}
+}
+
+button {
+    height: 40px;
+    width: 100px;
+    border-radius: 12px;
+    background-color: #4e4a4a;
+    color: rgb(248, 0, 0);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    font-family: inherit;
+}
+button a:hover{
+    color: black;
+}
+
+button:hover {
+    background-color: rgb(233, 230, 224);
+    color:rgb(244, 237, 237);
+
+}   
+.reviews{
+    color: black;
+}
+.reviews {
+background-color: rgb(114, 114, 114);
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+padding: 50px 20px;
+justify-content: center;
+min-height: 30vh;
+
+}
+
+
+.customer {
+background-color: rgb(52, 73, 92);
+border-radius: 12px;
+padding: 20px;
+width: calc(25% - 20px);
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+flex: 1 1 200px;
+color: white;
+transition: .4s ease-in-out;
+}
+.customer:hover{
+    transform: translateY(-5px);
+}
+
+.customer-name {
+font-style: italic;
+text-align: right;
+margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+.customer {
+    width: 100%;
+}
+}
+.social-media{
+color: white;
+}
+.newsletter{
+    background-color: antiquewhite;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 70px;
+}
+.newscont{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    height:60vh;
+    
+}
+.newscont input{
+    border-radius: 7px;
+    border: 1px solid  black;
+    background-color: rgb(223, 223, 223);
+    margin-bottom: 20px;
+    width: 260px;
+    height: 40px;
+    transition: 0.4s ease-in;
+    box-shadow: 3px 10px 10px rgba(0,0,0,0.2);
+}
+.newscont input:hover{
+    background-color: aliceblue;
+}
+.newscont button{
+    box-shadow: 3px 10px 10px rgba(0,0,0,0.2);
+}
+footer{
+    background-color: rgba(0, 0, 0, 0.8);            
+    padding: 10px 20px;
+    width: 100%;
+}
+footer, p{
+color: white;
+}
+.quick_links ul{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    max-width: 500px;
+    width: 60%;
+    height:500px;
+    border-radius: 17px;
+    background-color: rgba(255,255,255,0.7);
+    box-shadow: 0 5px 6pc rgba(0,0,0,0.5);
+}
+@media(max-width: 768px){
+    .form{
+        max-width: 700px;
+    }
+}
+form input{
+    height: 30px;
+    width: 200px;
+    
+}
+form label{
+    margin-right: 40px;
+}
+#message{
+    margin-right: 40px;
+}
+.details{
+    margin: 20px
+}
+.inq_body{
+    background-color: rgb(196, 212, 212);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 60%;
+    height:500px;
+    border-radius: 17px;
+    background-color: rgba(255,255,255,0.7);
+    box-shadow: 0 5px 6pc rgba(0,0,0,0.5);
+}
+form input{
+    height: 30px;
+    width: 200px;
+    
+}
+form label{
+    margin-right: 40px;
+}
+#message{
+    margin-right: 40px;
+}
+.details{
+    display: flex;
+    align-items: center;
+}
+.details label {
+    width: 100px; 
+    text-align: right; 
+    margin-right: 10px; 
+}
+.details input, .details textarea {
+    flex: 1; 
+    height: 30px;
+    padding: 5px;
+}
+.details textarea{
+    height:60px;
+    
+}
+.inq_body{
+    background-color: rgb(196, 212, 212);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 1.5s ease-out forwards;
+  opacity: 0; /* So it starts invisible */
+}
+    </style>
 </head>
 <body>
     <nav>
         <div class="logo">
-            <H1><a href="#">Kladi </a></H1>
+            <H1><a href="index.html">Kladi </a></H1>
          </div>         
          <div class="links">
             <ul>
@@ -23,9 +374,9 @@
          </div>
      </nav>
      <div class="main_logo" id="home">
-        <h1 style="font-family: 'Playfair Display', serif;font: weight bolder; letter-spacing: 1px;color: rgb(255, 255, 255);">Welcome To Kladi </h1><br>
-        <p style="font-family:cursive; font-weight: 10px; font-size: small;color: rgb(255, 255, 255);">~ We do not follow trends, we set them ~</p><br>
-        <p><button type="button" ><a href="product.html">Shop Now</a></button></p>
+        <h1 class="fade-in">Welcome To Kladi </h1><br>
+        <p class="fade-in">~ We do not follow trends, we set them ~</p><br>
+        <p><button type="button" class="fade-in"><a href="product.html">Shop Now</a></button></p>
      </div>
      <div class="story">
         <div class="story_image">
@@ -78,6 +429,9 @@
                 <li><a href="enquire..html">Inquire</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
+        </div><br>
+        <div class="contacts">
+           <center> Email us: Kladi@gmail.com | call us: 0712492105</center>
         </div>
         <div class="social_media">
             <ul></ul>
